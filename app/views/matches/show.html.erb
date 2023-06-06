@@ -1,2 +1,29 @@
-<h1>Matches#show</h1>
-<p>Find me in app/views/matches/show.html.erb</p>
+<div class="container">
+  <div class="banner">
+  <h1><%= @match.address %></h1>
+  <h2><%= @match.date%>
+  </div>
+
+  <div class="match-infos">
+    <h2><strong>Détails</strong></h2>
+
+    <div class="user-infos">
+      <%= cl_image_tag @match.user.photo.key%>
+      <%= @match.user.nickname%>
+    </div>
+
+
+    <%= @match.type%>
+    <%= @match.modality%>
+    <%= @match.price%>
+    <%= @match.level%>
+    </div>
+
+    <button>Je veux jouer</button>
+
+    <div class="map"
+        data-controller="map"
+        data-map-marker-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
