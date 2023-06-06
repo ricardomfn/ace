@@ -48,3 +48,6 @@ match1 = Match.new({
 })
 match1.user = user1
 match1.save!
+
+request1 = Request.new(status: 0, match_id: match1.id, user_id: user1.id)
+request1.save!
