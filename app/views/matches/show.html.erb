@@ -1,8 +1,34 @@
-<h1>Matches#show</h1>
-<p>Find me in app/views/matches/show.html.erb</p>
+<div class="container">
+  <div class="banner">
+  <h1><%= @match.address %></h1>
+  <h2><%= @match.date%>
+  </div>
 
-<div data-controller="popup">
-<button class="btn btn-primary" id="myButton">Ace!</button>
-</div>
+  <div class="match-infos">
+    <h2><strong>Détails</strong></h2>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div class="user-infos">
+      <% @match.user.photo%>
+      <%= @match.user.nickname%>
+    </div>
+
+    <div>
+    <p><%= @match.match_type%></p>
+    <p><%= @match.modality%></p>
+    <p><%= @match.price%></p>
+    <p><%= @match.level%></p>
+    </div>
+
+
+
+    <div data-controller="popup">
+    <button class="btn btn-primary" id="myButton">Ace!</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div style="width: 100%; height: 250px;"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>

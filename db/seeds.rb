@@ -8,8 +8,10 @@
 require "open-uri"
 require "date"
 
-User.destroy_all
+Request.destroy_all
 Match.destroy_all
+User.destroy_all
+
 
 avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046771/avatar-de-personne-icone-homme_rznm1h.png")
 avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046772/avatar-de-personne-icone-femme_kqiadz.png")
@@ -46,3 +48,6 @@ match1 = Match.new({
 })
 match1.user = user1
 match1.save!
+
+request1 = Request.new(status: 0, match_id: match1.id, user_id: user1.id)
+request1.save!

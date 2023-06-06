@@ -1,4 +1,10 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @requests = current_user.requests
+  end
+
   def show
     @request = Request.find(params[:id])
   end

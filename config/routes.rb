@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :matches do
     resources :requests, only: [:new, :create, :update]
   end
-  resources :requests, only: [:show, :destroy]
+  resources :requests, only: [:index, :show, :destroy]
 
   patch 'accept_requests/:id', to: 'requests#accepted?', as: 'accept_request'
   patch 'refuse_requests/:id', to: 'requests#refused?', as: 'refuse_request'

@@ -1,0 +1,23 @@
+
+
+<%# Dans la show de request je veux faire apparaitre la request pour que le createur puisse valider %>
+<%# Le createur voit cette page, donc il faut faire apparaitre le nom du demandeur %>
+
+<div class="container">
+<% @requests.each do |request| %>
+  <h2> <%= request.user.nickname %> vous défie ! </h2>
+  <p><%= request.match.address %></p>
+  <p><%= request.match.modality%></p>
+  <p><%= request.match.level.to_i %></p>
+  <p><%= request.match.date %></p>
+  <p><%= request.match.price.to_i %>€</p>
+    <div>
+    <% if request.status != "accepted" %>
+      <button class="mt-5 ms-5"><%= link_to "Accept", accept_request_path(request), data: { turbo_method: :patch } %></button>
+    <% end %>
+    <% if request.status != "refused" %>
+      <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+    <% end %>
+  </div>
+<% end %>
+</div>
