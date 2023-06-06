@@ -19,7 +19,12 @@
     <%= @match.level%>
     </div>
 
-    <button>Je veux jouer</button>
+    
+    <div data-controller="popup">
+    <button class="btn btn-primary" id="myButton">Ace!</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <div class="map"
         data-controller="map"

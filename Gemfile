@@ -18,6 +18,11 @@ gem "puma", "~> 5.0"
 gem "devise"
 
 gem "geocoder"
+gem "dotenv-rails"
+
+gem "cloudinary"
+
+
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -30,6 +35,7 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem 'sweetalert2-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
