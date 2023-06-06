@@ -21,8 +21,7 @@ class MatchesController < ApplicationController
       @marker = [
         {
           lat: @match.latitude,
-          lng: @match.longitude,
-          marker_html: render_to_string(partial: "marker")
+          lng: @match.longitude
         }
       ]
     end
@@ -36,9 +35,8 @@ class MatchesController < ApplicationController
     @match = Match.new(match_params)
     @match.user = current_user
     if @match.save
-      redirect_to root_path
+      redirect_to match_path(@match)
     else
-      raise
       render new_match_path, status: :unprocessable_entity, alert: 'An error occured'
     end
   end
@@ -49,6 +47,6 @@ class MatchesController < ApplicationController
 
   private
   def match_params
-    params.require(:match).permit(:address, :modality, :price, :level, :date, :type)
+    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type)
   end
 end

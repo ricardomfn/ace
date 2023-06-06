@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import mapboxgl from "mapbox-gl"
 
 // Connects to data-controller="map"
 export default class extends Controller {
@@ -6,7 +7,7 @@ export default class extends Controller {
     apiKey: String,
     marker: Array
   }
-  
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -14,15 +15,13 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/kenzabouachik/clik9gg3f00ed01qv0qjo6uaz"
     })
+
     this.#addMarkerToMap()
     this.#fitMapToMarker()
   }
 
   #addMarkerToMap() {
-
-
     this.markerValue.forEach((marker) => {
-
       // const customMarker = document.createElement("div")
       // customMarker.innerHTML = marker.marker_html
       // customMarker

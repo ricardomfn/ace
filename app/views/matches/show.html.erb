@@ -8,27 +8,27 @@
     <h2><strong>Détails</strong></h2>
 
     <div class="user-infos">
-      <%= cl_image_tag @match.user.photo.key%>
+      <% @match.user.photo%>
       <%= @match.user.nickname%>
     </div>
 
-
-    <%= @match.type%>
-    <%= @match.modality%>
-    <%= @match.price%>
-    <%= @match.level%>
+    <div>
+    <p><%= @match.match_type%></p>
+    <p><%= @match.modality%></p>
+    <p><%= @match.price%></p>
+    <p><%= @match.level%></p>
     </div>
 
-    
+
+
     <div data-controller="popup">
     <button class="btn btn-primary" id="myButton">Ace!</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <div class="map"
-        data-controller="map"
-        data-map-marker-value="<%= @marker.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div style="width: 100%; height: 250px;"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>

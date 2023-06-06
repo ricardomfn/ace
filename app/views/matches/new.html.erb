@@ -1,10 +1,13 @@
 <div class="container">
-<h1>Matches#new</h1>
+<h1>Create a new Match</h1>
 
 <%= simple_form_for(@match) do |f| %>
   <%= f.input :address %>
+  <%= f.input :date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
 
-  <%= f.input :type %>
+  <%= f.input :match_type %>
   <%= f.input :modality %>
   <%= f.input :price %>
   <%= f.input :level %>
