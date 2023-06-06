@@ -8,6 +8,11 @@
 require "open-uri"
 require "date"
 
+Request.destroy_all
+Match.destroy_all
+User.destroy_all
+
+
 avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046771/avatar-de-personne-icone-homme_rznm1h.png")
 avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046772/avatar-de-personne-icone-femme_kqiadz.png")
 
@@ -32,3 +37,17 @@ user2 = User.new({
 })
 user2.photo.attach(io: avatar2, filename:"Mon avatar2")
 user2.save!
+
+match1 = Match.new({
+  address: "21 rue lépante Nice",
+  match_type: "challenge",
+  modality: "simple",
+  price: "10",
+  level: "500",
+  date: "05/08/2023"
+})
+match1.user = user1
+match1.save!
+
+request1 = Request.new(status: 0, match_id: match1.id, user_id: user1.id)
+request1.save!
