@@ -1,0 +1,10 @@
+<div class="container">
+<% @matches.each do |match| %>
+  <%= link_to matches_path(match) %>
+  <p><%= match.address %></p>
+  <p><%= match.modality%></p>
+  <p><%= match.level.to_i %></p>
+  <p><%= match.date %></p>
+  <p><%= match.price.to_i %>€</p>
+<% end %>
+</div>
