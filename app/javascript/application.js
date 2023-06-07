@@ -7,3 +7,4 @@ import "bootstrap"
 //= require sweetalert
 import "./swal.js"
 //= require sweetalert2
+

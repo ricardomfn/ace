@@ -11,11 +11,10 @@
   <p><%= request.match.level.to_i %></p>
   <p><%= request.match.date %></p>
   <p><%= request.match.price.to_i %>€</p>
+  <p><%= request.status %></p>
     <div>
-    <% if request.status != "accepted" %>
+    <% if request.status == "pending" %>
       <button class="mt-5 ms-5"><%= link_to "Accept", accept_request_path(request), data: { turbo_method: :patch } %></button>
-    <% end %>
-    <% if request.status != "refused" %>
       <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
     <% end %>
   </div>
