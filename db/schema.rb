@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_102833) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-    t.boolean "archived"
+    t.boolean "archived", default: false
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 

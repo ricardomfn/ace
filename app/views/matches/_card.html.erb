@@ -1,7 +1,7 @@
 
 <div class="card-product">
-    <% @matches.each do |match| %>
-      <% match.requests.where.not(status: 1).each do |request| %>
+    <% @matches.where(archived: false).each do |match| %>
+      <%# <% match.requests.where.not(status: 1).each do |request| %>
           <%= link_to match_path(match) do %>
             <div class="card">
               <h2 class="card-title"><i class="fa-solid fa-location-dot" style="color: #000000;"></i><%= match.address %></h2>
@@ -11,10 +11,9 @@
                 <p><%= match.level.to_i %></p>
                 <p><i class="fa-solid fa-calendar-days" style="color: #000000;"></i><%= match.date.strftime("%d""-""%b""-""%Y") %></p>
                 <p><%= match.price.to_i %>€</p>
-                <p><%= request.status %></p>
+                <p><%= match.requests.last.status %></p>
               </div>
             </div>
           <% end %>
-      <% end %>
   <% end %>
 </div>
