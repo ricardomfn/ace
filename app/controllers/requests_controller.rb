@@ -25,8 +25,11 @@ class RequestsController < ApplicationController
 
   def accepted?
     @request = Request.find(params[:id])
+    @match = @request.match
     @request.status = "accepted"
     @request.save
+    @match.archived = true # on modifie son etat
+    @match.save
     redirect_to matches_path
   end
 
