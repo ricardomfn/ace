@@ -25,9 +25,9 @@
       label: "Nom de famille" %>
 
     <%= f.input :birth_date,
-      required: true,
-      input_html: { autocomplete: "birth-date" },
-      label: "Date de naissance" %>
+        as: :string,
+        input_html: { data: { controller: "datepicker" } },
+        label: "Date de naissance" %>
 
     <%= f.input :password,
       required: true,
@@ -45,6 +45,10 @@
       collection: [['Jamais joué', 0],['Débutant', 200],['Intermediaire', 400],['Confirmé', 600],['Expert', 800],['Elite',1000]],
       input_html: { autocomplete: "points" },
       label: "Comment jugez-vous votre niveau?" %>
+
+    <%= f.input :photo, as: :file %>
+
+
   </div>
 
   <div class="form-actions">
