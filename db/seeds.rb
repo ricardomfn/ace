@@ -16,6 +16,9 @@ User.destroy_all
 avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046771/avatar-de-personne-icone-homme_rznm1h.png")
 avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046772/avatar-de-personne-icone-femme_kqiadz.png")
 
+p avatar1
+p avatar2
+
 user1 = User.new({
   email: "ricardo@gmail.com",
   password: "123456",
@@ -26,6 +29,8 @@ user1 = User.new({
 })
 user1.photo.attach(io: avatar1, filename:"Mon avatar1")
 user1.save!
+
+p user1
 
 user2 = User.new({
   email: "jo@gmail.com",
@@ -48,6 +53,8 @@ match1 = Match.new({
 })
 match1.user = user1
 match1.save!
+
+p match1
 
 match2 = Match.new({
   address: "56 rue lépante PARIS",
