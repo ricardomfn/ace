@@ -1,3 +1,4 @@
+
 <div class="card-product">
     <% @matches.each do |match| %>
       <% match.requests.where.not(status: 1).each do |request| %>

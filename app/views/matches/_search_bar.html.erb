@@ -4,18 +4,7 @@
       <%= form.button type: :submit, class: "btn btn-primary" do %>
         <i class="fas fa-search"></i>
       <% end %>
-      <%= form.text_field :query, class: "form-control", placeholder: "Rechercher un match" %>
-    </div>
-  <% end %>
-</div>
-
-<div class="container">
-  <%= form_with url: matches_path, method: :get, class: "d-flex search-bar" do |form| %>
-    <div class="input-group">
-      <%= form.button type: :submit, class: "btn btn-primary" do %>
-        <i class="fas fa-search"></i>
-      <% end %>
-      <%= form.date_field :date, class: "form-control", placeholder: "Rechercher une date" %>
+      <%= form.date_field :date, class: "form-control", placeholder: "", value: params[:date] %>
     </div>
   <% end %>
 </div>
