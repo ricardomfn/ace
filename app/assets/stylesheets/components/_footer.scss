@@ -1,28 +1,38 @@
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
   background: #090909;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 50px;
+  // padding: 0px 50px;
   color: rgb(246, 243, 243);
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height:10vh;
-
+  z-index: 999; /* Ensure it appears above other elements */
+  flex-grow: 1;
 }
 
+// .footer-links {
+//   display: flex;
+//   align-items: center;
+//   flex-grow: 1;
+//   width:100%;
+// }
 
-.footer-links {
-  display: flex;
-  align-items: center;
-}
 .footer-links a {
   color: rgb(246, 243, 243);
   text-decoration: none;
   font-size: 24px;
-  padding: 0px 10px;
+  padding: 0px 23px;
 }
+
 .footer-links a:hover {
   opacity: 1;
+}
+
+/* Additional CSS to enable scrolling */
+body {
+  margin-bottom: 10vh; /* Add bottom margin equal to the footer's height */
 }
