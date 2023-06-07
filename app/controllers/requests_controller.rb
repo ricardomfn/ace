@@ -25,16 +25,19 @@ class RequestsController < ApplicationController
 
   def accepted?
     @request = Request.find(params[:id])
+    @match = @request.match
     @request.status = "accepted"
     @request.save
-    redirect_to matches_path
+    @match.archived = true # on modifie son etat
+    @match.save
+    redirect_to requests_path
   end
 
   def refused?
     @request = Request.find(params[:id])
     @request.status = "refused"
     @request.save
-    redirect_to matches_path
+    redirect_to requests_path
   end
 
   def destroy
