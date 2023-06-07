@@ -1,0 +1,16 @@
+<%#  Le demandeur voit cette page, il pourra voir l'état de sa demande et l'annuler s'il a envie%>
+
+<div class="container">
+  <% @my_requests.each do |request| %>
+    <h2> Vous avez envoyé une demande à : <%= request.match.user.nickname %>!</h2>
+    <p><%= request.match.address %></p>
+    <p><%= request.match.modality%></p>
+    <p><%= request.match.level.to_i %></p>
+    <p><%= request.match.date %></p>
+    <p><%= request.match.price.to_i %>€</p>
+    <p>Son statut est : <%= request.status %></p>
+    <% if request.status == "pending" %>
+      <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+    <% end %>
+  <% end %>
+</div>

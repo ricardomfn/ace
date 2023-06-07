@@ -49,5 +49,19 @@ match1 = Match.new({
 match1.user = user1
 match1.save!
 
-request1 = Request.new(status: 0, match_id: match1.id, user_id: user1.id)
+match2 = Match.new({
+  address: "56 rue lépante PARIS",
+  match_type: "challenge",
+  modality: "simple",
+  price: "67",
+  level: "1000",
+  date: "10/08/2056"
+})
+match2.user = user2
+match2.save!
+
+request1 = Request.new(status: 0, match_id: match1.id, user_id: user2.id)
 request1.save!
+
+request2 = Request.new(status: 0, match_id: match2.id, user_id: user1.id)
+request2.save!
