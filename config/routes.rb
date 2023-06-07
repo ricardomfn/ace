@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:new, :create, :update]
   end
   resources :requests, only: [:index, :show, :destroy]
+  get "games", to: "requests#games"
 
   patch 'accept_requests/:id', to: 'requests#accepted?', as: 'accept_request'
   patch 'refuse_requests/:id', to: 'requests#refused?', as: 'refuse_request'

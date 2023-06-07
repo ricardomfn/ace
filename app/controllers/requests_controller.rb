@@ -2,7 +2,13 @@ class RequestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @requests = current_user.requests
+    # @requests = current_user.requests
+    @requests = Request.where(match: current_user.matches.first)
+    # les demandes des autres a moi
+  end
+
+  def games
+    @my_requests = Request.where(user: current_user)
   end
 
   def show
@@ -30,14 +36,14 @@ class RequestsController < ApplicationController
     @request.save
     @match.archived = true # on modifie son etat
     @match.save
-    redirect_to requests_path
+    redirect_to matches_path
   end
 
   def refused?
     @request = Request.find(params[:id])
     @request.status = "refused"
     @request.save
-    redirect_to requests_path
+    redirect_to matches_path
   end
 
   def destroy
