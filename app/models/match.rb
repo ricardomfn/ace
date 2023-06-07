@@ -3,7 +3,6 @@ class Match < ApplicationRecord
   MODALITIES = ['Simple', 'Double']
   belongs_to :user
   has_many :requests, dependent: :destroy
-
   validates :address, presence: true
   validates :match_type, presence: true
   validates :modality, presence: true
