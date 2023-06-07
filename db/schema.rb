@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_145036) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_102702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_145036) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_leagues_on_user_id"
+  end
+
   create_table "matches", force: :cascade do |t|
     t.string "address"
     t.string "match_type"
@@ -57,6 +65,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_145036) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_matches_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "league_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_memberships_on_league_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -88,7 +105,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_145036) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "leagues", "users"
   add_foreign_key "matches", "users"
+  add_foreign_key "memberships", "leagues"
+  add_foreign_key "memberships", "users"
   add_foreign_key "requests", "matches"
   add_foreign_key "requests", "users"
 end

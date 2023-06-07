@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h1>Add new member for <%= @league.name %></h1>
+
+      <%= simple_form_for [@league, @membership] do |f| %>
+        <%= f.input :user, collection: User.all, input_html: {multiple: true, class: "multiple-select"}, include_hidden: false %>
+        <%= f.submit "Add member", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

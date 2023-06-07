@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   end
   resources :requests, only: [:index, :show, :destroy]
 
+  resources :leagues do
+    resources :memberships, only: [ :new, :create ]
+  end
+
+  resources :memberships, only: [:destroy]
+
   patch 'accept_requests/:id', to: 'requests#accepted?', as: 'accept_request'
   patch 'refuse_requests/:id', to: 'requests#refused?', as: 'refuse_request'
 
