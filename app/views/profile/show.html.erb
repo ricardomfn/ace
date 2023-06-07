@@ -1,0 +1,9 @@
+<div class="container">
+
+<div class="profile">
+  <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered"%>
+  <p><%= @user.nickname %></p>
+  <p><%= @user.points %></p>
+</div>
+
+</div>
