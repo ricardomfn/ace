@@ -5,9 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :matches
   has_many :requests
+  has_many :memberships
+  has_many :leagues_as_member, through: :memberships, source: :league
+  belongs_to :leagues
   has_one_attached :photo
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :birth_date, presence: true
 
+  def name
+    nickname
+  end
 end
