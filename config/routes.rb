@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :profiles, only: [:show]
+  get 'profile', to: 'pages#profile'
   resources :matches do
     resources :requests, only: [:new, :create, :update]
   end
