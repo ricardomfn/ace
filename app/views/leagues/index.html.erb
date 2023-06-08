@@ -4,14 +4,17 @@
 <p>Find me in app/views/leagues/index.html.erb</p>
 
 <div class="card-product">
-    <% @leagues.each do |league| %>
-      <%= link_to league_path(league) do %>
-            <div class="card">
-              <h2 class="card-title"><%= league.name %></h2>
-              <div class="card-text">
-                <p>created by :<%= league.user.first_name %></p>
-              </div>
-            </div>
-        <% end %>
-      <% end %>
+  <% @leagues.each do |league| %>
+    <%= link_to league_path(league) do %>
+      <div class="card">
+        <h2 class="card-title"><%= league.name %></h2>
+        <div class="card-text">
+          <p>created by: <%= league.user.first_name %></p>
+        </div>
+        <div class="card-links" style="text-align: right;">
+          <i class="fa-regular fa-square-plus" style="color: #050505;"></i>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
