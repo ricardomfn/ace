@@ -1,0 +1,29 @@
+.hexag {
+  width: 80px;
+  height: 80px;
+  background-color: orange; /* Couleur de fond de l'hexage */
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-infos {
+  display: flex;
+  justify-content: center;
+  margin-top: -40px;
+}
+
+.banner{
+  text-align: center;
+}
+
+.match-infos {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-infos {
+  display: flex;
+  align-items: end;
+}
