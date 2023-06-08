@@ -35,12 +35,22 @@ class MatchesController < ApplicationController
     end
   end
 
-
   def edit
+    @match = Match.find(params[:id])
+    @request = Request.where(match: @match).first
+  end
+
+  def update
+    @match = Match.find(params[:id])
+    @match.winner = params[:match][:winner]
+    @match.update(match_params)
+    @user = User.where(nickname: params[:match][:winner]).first
+    @user.points =+ 50
+    redirect_to profile_path
   end
 
   private
   def match_params
-    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type)
+    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type, :winner)
   end
 end
