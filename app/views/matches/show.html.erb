@@ -1,35 +1,49 @@
 <%= render 'shared/navbar_general' %>
-<div class="container">
+<div style="width: 100%; height: 150px;"
+  data-controller="map"
+  data-map-marker-value="<%= @marker.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<div class="show-infos">
+  <div class="hexag">
+    <% if @match.match_type == "défi"  %>
+      <div>
+      <i class="fa-solid fa-trophy" style="color: #000000; font-size: 40px;" ></i>
+      <%# <p><%= @match.match_type %>
+      </div>
+    <%else %>
+      <i class="fa-solid fa-face-smile" style="color: #000000; font-size: 40px;"></i>
+      <%# <p><%= @match.match_type %></p>
+    <%end %>
+  </div>
+</div>
+
   <div class="banner">
-  <h1><%= @match.address %></h1>
-  <h2><%= @match.date%>
+  <h4><%= @match.address %></h4>
+  <p><%= @match.date.strftime('%A %e %B')%></p>
   </div>
 
   <div class="match-infos">
-    <h2><strong>Détails</strong></h2>
+
+<div class="container">
+    <p><strong>Price: </strong><%= @match.price%> €</p>
+    <p><strong>Level: </strong><%= @match.level%> points</p>
+    <p><strong>Type: </strong><%= @match.match_type%></p>
+    <p><strong>Modalité: </strong><%= @match.modality%></p>
 
     <div class="user-infos">
-      <% @match.user.photo%>
-      <%= @match.user.nickname%>
+      <%= cl_image_tag @match.user.photo.key, class: "avatar"%>
+      <p><strong><%= @match.user.nickname%></strong></p>
     </div>
+  </div>
 
     <div>
-    <p><%= @match.match_type%></p>
-    <p><%= @match.modality%></p>
-    <p><%= @match.price%></p>
-    <p><%= @match.level%></p>
     </div>
 
 
 
     <div data-controller="popup">
-    <button class="btn btn-primary" id="myButton">Ace!</button>
+    <button class="btn-ace" id="myButton">Ace!</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <div style="width: 100%; height: 250px;"
-      data-controller="map"
-      data-map-marker-value="<%= @marker.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
