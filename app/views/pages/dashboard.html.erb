@@ -16,39 +16,49 @@
     <div data-message-target="message" class="content">
       <!-- Contenu de la colonne des messages -->
 
-      <div class="card-vinted">
+      <div class="card-vinted" data-controller="toggle" class="collapsed">
         <% @my_requests.each do |request| %>
-        
+        <div data-action="click->toggle#toggle">
           <h2> Vous avez envoyé une demande à : <%= request.match.user.nickname %>!</h2>
-          <p><%= request.match.address %></p>
-
-          <p><%= request.match.modality%></p>
-          <p><%= request.match.level.to_i %></p>
-          <p><%= request.match.date %></p>
-          <p><%= request.match.price.to_i %>€</p>
-          <p>Son statut est : <%= request.status %></p>
-          <% if request.status == "pending" %>
-            <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
-          <% end %>
+          <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
+        </div>
+        <div data-toggle-target="content">
+          <p> <strong>Adresse: </strong> <%= request.match.address %></p>
+          <p><strong>Niveau: </strong><%= request.match.level.to_i %></p>
+          <p><strong>Date: </strong><%= request.match.date %></p>
+          <p style="text-align: end; font-size: 22px"><strong><%= request.match.price.to_i %>€</strong></p>
+          <%# <p><strong>Son statut est : </strong><%= request.status %>
+          <div class="button-container">
+            <% if request.status == "pending" %>
+              <button class="refuse-button button-full-width"><%= link_to "Annuler le match", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+            <% end %>
+          </div>
         <% end %>
+        </div>
       </div>
 
-      <div class="card-vinted">
+      <div class="card-vinted" data-controller="toggle" class="collapsed">
         <% @requests.each do |request| %>
+        <div data-action="click->toggle#toggle">
           <h2> <%= request.user.nickname %> vous défie ! </h2>
-          <p><%= request.match.address %></p>
-          <p><%= request.match.modality%></p>
-          <p><%= request.match.level.to_i %></p>
-          <p><%= request.match.date %></p>
-          <p><%= request.match.price.to_i %>€</p>
-          <p><%= request.status %></p>
-        <div class="d-flex">
+          <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
+        </div>
+        <div data-toggle-target="content">
+          <p><strong>Adresse: </strong><%= request.match.address %></p>
+          <p><strong>Niveau: </strong><%= request.match.level.to_i %></p>
+          <p><strong>Date: </strong><%= request.match.date %></p>
+          <p style="text-align: end; font-size: 22px"><strong><%= request.match.price.to_i %>€</strong></p>
+          <%# <p><%= request.status %>
+        <div class="button-container">
           <% if request.status == "pending" %>
-            <button class="mt-5 ms-5"><%= link_to "Accept", accept_request_path(request), data: { turbo_method: :patch } %></button>
-            <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+            <div class="button-wrapper">
+              <button class="accept-button button-half-width"><%= link_to "Accepter", accept_request_path(request), data: { turbo_method: :patch } %></button>
+              <button class="refuse-button button-half-width"><%= link_to "Refuser", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+            </div>
           <% end %>
         </div>
         <% end %>
+        </div>
       </div>
 
     </div>
