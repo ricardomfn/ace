@@ -6,17 +6,15 @@ class MembershipsController < ApplicationController
     @membership = Membership.new
 
     if params[:query].present?
-      sql_query = <<~SQL
-        users.nickname ILIKE :query
-      SQL
-
+      sql_query = "users.nickname ILIKE :query"
       @user_collection = User.where(sql_query, query: "%#{params[:query]}%")
     else
       @user_collection = User.all
     end
 
-    @user_collection = @user_collection.reject { |user| @league.users.include?(user) }
+    @user_collection = @user_collection - @league.users
   end
+
 
   def create
     @users = params[:membership][:user]

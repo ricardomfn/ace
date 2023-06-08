@@ -2,9 +2,11 @@
  <div class="container">
     <h1><%= @league.name %></h1> <br>
     <p>created by : <%= @league.user.first_name %> <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%> </p>
-    <button>
+  <% if @league.user == current_user %>
+  <button>
     <%= link_to "Ajouter un membre", new_league_membership_path(@league) %>
   </button>
+  <%end %>
 </div>
 
 <table class="membership-table">
@@ -33,7 +35,9 @@
         <td><%= membership.user.nickname %></td>
         <td><%= membership.user.points %></td>
         <td>
-          <%= link_to "x", membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+          <% if @league.user == current_user %>
+            <%= link_to "x", membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+          <%end %>
         </td>
       </tr>
     <% end %>
