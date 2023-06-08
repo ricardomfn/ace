@@ -2,10 +2,19 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <h1>Add new member for <%= @league.name %></h1>
-
+      <h1><%= @league.name %></h1>
+    <br>
+    <%= form_with url: new_league_membership_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control me-3 ms-2",
+        placeholder: "recherche un joueur"
+      %>
+      <%= submit_tag "Ace !" %>
+    <% end %>
+    <br>
       <%= simple_form_for [@league, @membership] do |f| %>
-        <%= f.input :user, collection: User.all, input_html: {multiple: true, class: "multiple-select"}, include_hidden: false %>
+        <%= f.input :user, collection: @user_collection, input_html: {multiple: true, class: "multiple-select"}, include_hidden: false %>
         <%= f.submit "Add member", class: 'btn btn-primary' %>
       <% end %>
     </div>

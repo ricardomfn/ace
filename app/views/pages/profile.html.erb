@@ -7,7 +7,7 @@
   <p><%= current_user.points %></p>
 </div>
 
-<div class="card-product">
+<div>
     <% @leagues.each do |league| %>
       <%= link_to league_path(league) do %>
             <div class="card">
