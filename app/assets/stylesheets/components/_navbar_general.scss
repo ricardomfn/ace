@@ -1,0 +1,14 @@
+.navbar {
+  background-color: black;
+  overflow: hidden;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px; /* Ajout d'un espace entre les éléments */
+}
+
+/* Style pour la flèche de retour */
+.navbar .back-arrow {
+  padding: 15px;
+}
