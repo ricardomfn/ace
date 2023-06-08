@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
 
   def index
     # @requests = current_user.requests
-    @requests = Request.where(match: current_user.matches.first)
+    @requests = Request.where(match: current_user.matches)
     # les demandes des autres a moi
   end
 
