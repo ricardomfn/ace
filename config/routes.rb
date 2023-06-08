@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :requests, only: [:index, :show, :destroy]
   get "games", to: "requests#games"
+  get "dashboard", to: "pages#dashboard"
 
   resources :leagues do
     resources :memberships, only: [ :new, :create ]

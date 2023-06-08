@@ -1,0 +1,28 @@
+.page-container {
+  // display: flex;
+  // justify-content: space-between;
+  gap: 20px;
+}
+
+.column {
+  flex-basis: 50%;
+  padding: 10px;
+  // background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.column-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #d6cf0a;
+}
+
+.content {
+  display: none;
+}
