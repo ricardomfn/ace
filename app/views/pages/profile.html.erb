@@ -1,9 +1,31 @@
+<%= render 'shared/navbar_general' %>
 <div class="container">
 
 <div class="profile">
   <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered"%>
   <p><%= current_user.nickname %></p>
-  <p><%= current_user.points %></p>
+  <p><%= current_user.points %>pts</p>
+</div>
+
+
+  <button>
+    <%= link_to "créer une ligue", new_league_path(@league) %>
+  </button>
+  <button>
+    <%= link_to "ajouter une ligue", leagues_path %>
+  </button>
+
+<div>
+    <% @leagues.each do |league| %>
+      <%= link_to league_path(league) do %>
+            <div class="card">
+              <h2 class="card-title"><%= league.name %></h2>
+              <div class="card-text">
+                <p>created by :<%= league.user.first_name %></p>
+              </div>
+            </div>
+        <% end %>
+      <% end %>
 </div>
 
 </div>

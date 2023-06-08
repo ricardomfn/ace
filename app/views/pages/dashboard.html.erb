@@ -1,0 +1,61 @@
+<%= render 'shared/navbar_general' %>
+
+<div data-controller="message" class="page-container">
+
+<div class="d-flex">
+  <div class="column">
+    <button data-action="click->message#showMessage" class="column-button">Notifications</button>
+  </div>
+
+  <div class="column">
+    <button data-action="click->message#showNotification" class="column-button">Messages</button>
+  </div>
+</div>
+
+  <div>
+    <div data-message-target="message" class="content">
+      <!-- Contenu de la colonne des messages -->
+
+      <div class="card-vinted">
+        <% @my_requests.each do |request| %>
+        
+          <h2> Vous avez envoyé une demande à : <%= request.match.user.nickname %>!</h2>
+          <p><%= request.match.address %></p>
+
+          <p><%= request.match.modality%></p>
+          <p><%= request.match.level.to_i %></p>
+          <p><%= request.match.date %></p>
+          <p><%= request.match.price.to_i %>€</p>
+          <p>Son statut est : <%= request.status %></p>
+          <% if request.status == "pending" %>
+            <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="card-vinted">
+        <% @requests.each do |request| %>
+          <h2> <%= request.user.nickname %> vous défie ! </h2>
+          <p><%= request.match.address %></p>
+          <p><%= request.match.modality%></p>
+          <p><%= request.match.level.to_i %></p>
+          <p><%= request.match.date %></p>
+          <p><%= request.match.price.to_i %>€</p>
+          <p><%= request.status %></p>
+        <div class="d-flex">
+          <% if request.status == "pending" %>
+            <button class="mt-5 ms-5"><%= link_to "Accept", accept_request_path(request), data: { turbo_method: :patch } %></button>
+            <button class="mt-5"><%= link_to "Refuse", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+    <div data-message-target="notification" class="content">
+      <!-- Contenu de la colonne des notifications -->
+      <p>Mes messages</p>
+    </div>
+  </div>
+
+</div>

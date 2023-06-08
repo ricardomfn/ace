@@ -1,2 +1,11 @@
-<h1>Matches#edit</h1>
-<p>Find me in app/views/matches/edit.html.erb</p>
+<h1>Indiquez le gagnant du défis</h1>
+
+<div class="container">
+  <%= simple_form_for(@match) do |f| %>
+
+    <%= f.input :winner, as: :check_boxes,
+      collection: [@match.user.name, @request.user.name ],
+      label: "Gagnant:" %>
+    <%= f.submit "Valider" %>
+  <% end %>
+</div>
