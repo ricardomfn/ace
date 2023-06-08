@@ -8,6 +8,7 @@
 require "open-uri"
 require "date"
 
+League.destroy_all
 Request.destroy_all
 Match.destroy_all
 User.destroy_all
