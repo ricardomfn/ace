@@ -1,6 +1,12 @@
-<h1>Bouge ton Ace!</h1>
+<div class="search-home">
+  <div class="container">
+    <%= render 'shared/navbar_index' %>
+    <h1><strong>Bouge ton Ace!</strong></h1>
+    <div class="search-filter">
+      <%= render 'search_bar'%>
+      <%= render 'filter_form'%>
+    </div>
+  </div>
 
-
-<%= render 'search_bar'%>
-<%= render 'filter_form'%>
+</div>
 <%= render 'card', matches: @matches%>

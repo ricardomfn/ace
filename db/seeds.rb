@@ -46,8 +46,8 @@ user2.photo.attach(io: avatar2, filename:"Mon avatar2")
 user2.save!
 
 match1 = Match.new({
-  address: "21 rue lépante Nice",
-  match_type: "challenge",
+  address: "68 Avenue Parmentier, Paris",
+  match_type: "défi",
   modality: "simple",
   price: "10",
   level: "500",
@@ -59,8 +59,8 @@ match1.save!
 p match1
 
 match2 = Match.new({
-  address: "56 rue lépante PARIS",
-  match_type: "challenge",
+  address: "56 rue lépante, Paris",
+  match_type: "amical",
   modality: "simple",
   price: "67",
   level: "1000",

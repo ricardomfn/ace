@@ -1,11 +1,10 @@
-<div class="container">
-  <%= form_with url: matches_path, method: :get, class: "d-flex search-bar" do |form| %>
-    <div class="input-group">
-      <%= form.button type: :submit, class: "btn btn-primary" do %>
-        <i class="fas fa-search"></i>
-      <% end %>
-      <%= form.date_field :date, class: "form-control", placeholder: "", value: params[:date] %>
-    </div>
-  <% end %>
+<div class="search-bar">
+<%= form_with url: matches_path, method: :get, class: "d-flex mt-5" do |form| %>
+  <div class="input-group">
+    <%= form.date_field :date, class: "form-control", placeholder: "", value: params[:date] %>
+    <%= form.button type: :submit, class: "btn" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+  </div>
+<% end %>
 </div>
-

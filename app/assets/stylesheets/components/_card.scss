@@ -1,0 +1,19 @@
+.card {
+  height: 180px;
+}
+
+.first-row {
+  flex-grow: 1;
+}
+
+.btn-ace {
+  height: 40px;
+  width: 50%;
+  background-color: orange;
+  border: none;
+}
+
+.btn-field {
+  display: flex;
+  justify-content: end;
+}

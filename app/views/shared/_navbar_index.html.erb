@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa-regular fa-bell mt-3" style="color: #0433ff; font-size: 18px"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "Mes demandes aux autres", games_path, class: "dropdown-item custom-dropdown-item" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Ces personnes vous defient !", requests_path, class: "dropdown-item custom-dropdown-item" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item custom-dropdown-item" %>
+        </li>
+        <!--li class="nav-item"-->
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
