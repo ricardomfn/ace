@@ -7,4 +7,17 @@
   <p><%= current_user.points %></p>
 </div>
 
+<div>
+    <% @leagues.each do |league| %>
+      <%= link_to league_path(league) do %>
+            <div class="card">
+              <h2 class="card-title"><%= league.name %></h2>
+              <div class="card-text">
+                <p>created by :<%= league.user.first_name %></p>
+              </div>
+            </div>
+        <% end %>
+      <% end %>
+</div>
+
 </div>

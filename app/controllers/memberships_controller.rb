@@ -1,8 +1,21 @@
 class MembershipsController < ApplicationController
+
   def new
     @league = League.find(params[:league_id])
     @users = User.all
     @membership = Membership.new
+
+    if params[:query].present?
+      sql_query = <<~SQL
+        users.nickname ILIKE :query
+      SQL
+
+      @user_collection = User.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @user_collection = User.all
+    end
+
+    @user_collection = @user_collection.reject { |user| @league.users.include?(user) }
   end
 
   def create
@@ -24,11 +37,9 @@ class MembershipsController < ApplicationController
 
   private
 
-
   def render_new
     @membership = Membership.new
     @membership.errors.add(:base, "A selected already exists")
     render :new, status: :unprocessable_entity
   end
-
 end

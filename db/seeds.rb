@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "open-uri"
 require "date"
+
 League.destroy_all
 Request.destroy_all
 Match.destroy_all

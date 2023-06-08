@@ -1,20 +1,41 @@
-  <%= render 'shared/navbar_general' %>
-  <div class="container">
+<%= render 'shared/navbar_general' %>
+ <div class="container">
     <h1><%= @league.name %></h1> <br>
-    <p>created by : <%= @league.user.first_name %> </p>
+    <p>created by : <%= @league.user.first_name %> <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%> </p>
     <button>
     <%= link_to "Ajouter un membre", new_league_membership_path(@league) %>
-    </button>
-  </div>
+  </button>
+</div>
 
-
-<div class="row mt-5">
-    <% @league.memberships.each do |membership| %>
-      <div class="col-4">
-        <%= link_to "x", membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
-        <div class="card-category">
-          <%= membership.user.nickname %>
-        </div>
-      </div>
+<table class="membership-table">
+  <thead>
+    <tr>
+      <th>Classement</th>
+      <th>nom</th>
+      <th>points</th>
+      <th>action</th>
+    </tr>
+  </thead>
+   <tbody>
+    <% @league.memberships.sort_by { |membership| membership.user.points }.each_with_index do |membership, index| %>
+      <tr>
+        <td>
+          <% if index == 0 %>
+            <i class="fa-solid fa-medal" style="color: #ffd91a;"></i>
+          <% elsif index == 1 %>
+            <i class="fa-solid fa-medal" style="color: #929290;"></i>
+          <% elsif index == 2 %>
+            <i class="fa-solid fa-medal" style="color: #a06b22;"></i>
+          <% else %>
+            <%= index + 1 %>
+          <% end %>
+        </td>
+        <td><%= membership.user.nickname %></td>
+        <td><%= membership.user.points %></td>
+        <td>
+          <%= link_to "x", membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+        </td>
+      </tr>
     <% end %>
-  </div>
+  </tbody>
+</table>
