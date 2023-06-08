@@ -1,31 +1,28 @@
 <%= render 'shared/navbar_general' %>
 <div class="container">
-
-<div class="profile">
-  <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered"%>
-  <p><%= current_user.nickname %></p>
-  <p><%= current_user.points %>pts</p>
-</div>
-
-
-  <button>
-    <%= link_to "créer une ligue", new_league_path(@league) %>
+  <div class="profile" >
+    <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
+    <p><%= current_user.nickname %></p>
+    <p><%= current_user.points %>pts</p>
+  </div>
+  <button class="btn btn-primary" style="background-color: white; color: white;">
+    <%= link_to "Créer une ligue", new_league_path(@league) %>
   </button>
-  <button>
-    <%= link_to "ajouter une ligue", leagues_path %>
+  <button class="btn btn-secondary" style="background-color: white; color: white;">
+    <%= link_to "Ajouter une ligue", leagues_path %>
   </button>
-
-<div>
+  <div class="row">
     <% @leagues.each do |league| %>
-      <%= link_to league_path(league) do %>
-            <div class="card">
-              <h2 class="card-title"><%= league.name %></h2>
-              <div class="card-text">
-                <p>created by :<%= league.user.first_name %></p>
-              </div>
+      <div class="col-md-4 mt-4" >
+        <%= link_to league_path(league) do %>
+          <div class="card mb-4" style="background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8)), url('<%= asset_path('ace-tennis-terre-battue.png') %>'); background-size: cover;" >
+            <div class="card-body">
+              <h4 class="card-title"><%= league.name %></h4>
+              <p class="card-text">Created by: <%= league.user.first_name %></p>
             </div>
+          </div>
         <% end %>
-      <% end %>
-</div>
-
+      </div>
+    <% end %>
+  </div>
 </div>
