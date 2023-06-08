@@ -1,7 +1,10 @@
 <%= render 'shared/navbar_general' %>
  <div class="league-container">
-    <h1><%= @league.name %></h1> <br>
-    <p>created by : <%= @league.user.first_name %> <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%> </p>
+  <h1><%= @league.name %></h1> <br>
+  <p>created by : <%= @league.user.first_name %>
+  <%= link_to profile_path do %>
+  <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%> </p>
+  <% end %>
   <% if @league.user == current_user %>
   <button>
     <%= link_to "Ajouter un membre", new_league_membership_path(@league) %>

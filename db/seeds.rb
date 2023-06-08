@@ -12,14 +12,14 @@ League.destroy_all
 Request.destroy_all
 Match.destroy_all
 User.destroy_all
-
+Membership.destroy_all
 
 
 avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046771/avatar-de-personne-icone-homme_rznm1h.png")
 avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046772/avatar-de-personne-icone-femme_kqiadz.png")
+avatar3 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109280/samples/animals/cat.jpg")
+avatar4 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109283/samples/people/smiling-man.jpg")
 
-p avatar1
-p avatar2
 
 user1 = User.new({
   email: "ricardo@gmail.com",
@@ -32,7 +32,7 @@ user1 = User.new({
 user1.photo.attach(io: avatar1, filename:"Mon avatar1")
 user1.save!
 
-p user1
+
 
 user2 = User.new({
   email: "jo@gmail.com",
@@ -44,6 +44,35 @@ user2 = User.new({
 })
 user2.photo.attach(io: avatar2, filename:"Mon avatar2")
 user2.save!
+
+
+user3 = User.new({
+  email: "kenza@gmail.com",
+  password: "kenza@gmail.com",
+  first_name: "Kenza",
+  last_name: "Bouachik",
+  nickname: "Kenza",
+  birth_date: "05/08/1992"
+})
+user3.photo.attach(io: avatar3, filename:"Mon avatar3")
+user3.save!
+
+
+user4 = User.new({
+  email: "Mathieu@gmail.com",
+  password: "Mathieu@gmail.com",
+  first_name: "Mathieu",
+  last_name: "Jelsch",
+  nickname: "Le M",
+  birth_date: "05/08/1992"
+})
+user4.photo.attach(io: avatar4, filename:"Mon avatar4")
+user4.save!
+
+
+
+
+
 
 match1 = Match.new({
   address: "68 Avenue Parmentier, Paris",
@@ -59,18 +88,52 @@ match1.save!
 p match1
 
 match2 = Match.new({
-  address: "56 rue lépante, Paris",
+  address: "56 rue oberkampf, Paris",
   match_type: "amical",
   modality: "simple",
   price: "67",
   level: "1000",
-  date: "10/08/2056"
+  date: "10/08/2023"
 })
 match2.user = user2
 match2.save!
+
+
+match3 = Match.new({
+  address: " 1 rue de Bezons, Carrières-sur-seine",
+  match_type: "amical",
+  modality: "simple",
+  price: "50",
+  level: "50",
+  date: "10/09/2023"
+})
+match3.user = user3
+match3.save!
+
+
+
 
 request1 = Request.new(status: 0, match_id: match1.id, user_id: user2.id)
 request1.save!
 
 request2 = Request.new(status: 0, match_id: match2.id, user_id: user1.id)
 request2.save!
+
+
+league1 = League.new(name: "Le Wagon 1211", user_id: user2.id)
+league1.save!
+
+
+league2 = League.new(name: "La très grande ligue", user_id: user1.id)
+league2.save!
+
+
+membership1 = Membership.new(user_id: user1.id, league_id: league1.id)
+membership1.save!
+
+
+membership2 = Membership.new(user_id: user2.id, league_id: league2.id)
+membership2.save!
+
+membership3 = Membership.new(user_id: user1.id, league_id: league2.id)
+membership3.save!

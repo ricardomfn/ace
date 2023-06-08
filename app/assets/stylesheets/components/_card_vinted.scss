@@ -1,8 +1,9 @@
 .card-vinted {
   background-color: #f5f5f5;
   border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 8px;
 }
 
 .card-vinted h2 {
@@ -18,7 +19,6 @@
   margin-top: 5px;
   margin-left: 5px;
   padding: 10px 15px;
-  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -26,15 +26,49 @@
   cursor: pointer;
 }
 
-.card-vinted button:hover {
-  background-color: #0056b3;
+
+.button-half-width {
+  width: 50%; /* Fait en sorte que les boutons occupent 50% de la largeur de la div parent */
+  margin: 0px;
 }
 
-.card-vinted button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #007bff;
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 
-.card-vinted button:active {
-  background-color: #00418c;
+.button-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.button-wrapper {
+  display: flex;
+  width: 100%; /* Fait en sorte que les boutons prennent toute la largeur de la div parent */
+}
+
+
+
+
+.accept-button {
+  background-color: green; /* Couleur de fond verte pour le bouton "Accept" */
+  /* Autres styles de bouton */
+}
+
+.refuse-button {
+  background-color: red; /* Couleur de fond rouge pour le bouton "Refuse" */
+  /* Autres styles de bouton */
+}
+
+
+.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.expanded {
+  max-height: 1000px; /* Choisissez une hauteur suffisamment grande pour afficher le contenu entier */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
