@@ -7,10 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "open-uri"
 require "date"
-
+League.destroy_all
 Request.destroy_all
 Match.destroy_all
 User.destroy_all
+
 
 
 avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046771/avatar-de-personne-icone-homme_rznm1h.png")
