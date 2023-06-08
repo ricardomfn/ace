@@ -1,7 +1,8 @@
-<div class="container">
-  <h1 class="league-name"><%= @league.name %></h1>
-  <p>Created by: <%= @league.user.first_name %></p>
-  <button>
+<%= render 'shared/navbar_general' %>
+ <div class="container">
+    <h1><%= @league.name %></h1> <br>
+    <p>created by : <%= @league.user.first_name %> </p>
+    <button>
     <%= link_to "Ajouter un membre", new_league_membership_path(@league) %>
   </button>
 </div>
