@@ -2,7 +2,7 @@
 
 <%# Dans l'indexx de request je veux faire apparaitre la request pour que le createur puisse valider %>
 <%# Le createur voit cette page, donc il faut faire apparaitre le nom du demandeur %>
-
+<%= render 'shared/navbar_general' %>
 <div class="container">
 <% @requests.each do |request| %>
   <h2> <%= request.user.nickname %> vous défie ! </h2>

@@ -1,5 +1,5 @@
 <%#  Le demandeur voit cette page, il pourra voir l'état de sa demande et l'annuler s'il a envie%>
-
+  <%= render 'shared/navbar_general' %>
 <div class="container">
   <% @my_requests.each do |request| %>
     <h2> Vous avez envoyé une demande à : <%= request.match.user.nickname %>!</h2>
