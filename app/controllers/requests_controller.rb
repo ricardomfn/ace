@@ -36,14 +36,14 @@ class RequestsController < ApplicationController
     @request.save
     @match.archived = true # on modifie son etat
     @match.save
-    redirect_to matches_path
+    redirect_to dashboard_path
   end
 
   def refused?
     @request = Request.find(params[:id])
     @request.status = "refused"
     @request.save
-    redirect_to matches_path
+    redirect_to dashboard_path
   end
 
   def destroy
