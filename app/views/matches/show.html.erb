@@ -46,8 +46,11 @@
 
 
 
-    <div class= "play-btn", data-controller="popup">
-    <button class="btn-ace" id="myButton">Jouer!</button>
+
+    <div data-controller="popup">
+      <%= simple_form_for [@match, @request] do |f| %>
+        <%= f.submit "Jouer!", class: "btn-ace", "data-action": "click->popup#handleClick" %>
+      <% end %>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
