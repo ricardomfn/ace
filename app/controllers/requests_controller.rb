@@ -22,10 +22,10 @@ class RequestsController < ApplicationController
 
   def create
     @match = Match.find(params[:match_id])
-    @request = Request.new(request_params)
+    @request = Request.new
     @request.match = @match
     @request.user = current_user
-    @request.save
+    @request.save if Request.where(user_id: current_user).count < 1
     # redirect_to la pop-up
   end
 
@@ -55,6 +55,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:match_id, :status)
+    params.require(:request).permit(:status)
   end
 end
