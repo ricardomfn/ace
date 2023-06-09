@@ -26,19 +26,24 @@
   <div class="match-infos">
 
 <div class="container">
-    <p><strong>Price: </strong><%= @match.price%> €</p>
-    <p><strong>Level: </strong><%= @match.level%> points</p>
-    <p><strong>Type: </strong><%= @match.match_type%></p>
-    <p><strong>Modalité: </strong><%= @match.modality%></p>
-
     <div class="user-infos">
-      <%= cl_image_tag @match.user.photo.key, class: "avatar"%>
-      <p><strong><%= @match.user.nickname%></strong></p>
+    <div>
+      <p><strong>Price: </strong><%= @match.price%> €</p>
+      <p><strong>Level: </strong><%= @match.level%> points</p>
+      <p><strong>Type: </strong><%= @match.match_type%></p>
+      <p><strong>Modalité: </strong><%= @match.modality%></p>
+    </div>
+      <div style="text-align: center;">
+        <%= cl_image_tag @match.user.photo.key, class: "avatar"%>
+        <p><strong><%= @match.user.nickname%></strong></p>
+        <i class="fa-regular fa-comment" style="font-size: 18px"></i>
+      </div>
     </div>
   </div>
 
     <div>
     </div>
+
 
 
 

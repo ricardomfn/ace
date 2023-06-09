@@ -19,11 +19,17 @@
   text-align: center;
 }
 
-.match-infos {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+// .match-infos {
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
 
 .user-infos {
   display: flex;
-  align-items: end;
+  align-items: bottom;
+  justify-content: space-around;
+}
+
+.play-btn {
+  display: flex;
+  justify-content: center;
 }
