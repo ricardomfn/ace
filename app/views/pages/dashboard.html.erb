@@ -16,10 +16,23 @@
     <div data-message-target="message" class="content">
       <!-- Contenu de la colonne des messages -->
 
+      <% @requests.each do |request| %>
+      <% if request.status == "accepted" && request.match.match_type == "Défi" %>
+      <div class="card-vinted" data-controller="toggle" class="collapsed">
+          <div data-action="click->toggle#toggle">
+          <h2 style="color: red"> Rentrez le score du défi avec <%= request.match.user.nickname %></h2>
+          </div>
+          <div data-toggle-target="content">
+            <button class="btn btn-info mt-5"><%= link_to "Rentrer le score", edit_match_path(request.match) %></button>
+          </div>
+      </div>
+      <% end %>
+      <% end %>
+
       <div class="card-vinted" data-controller="toggle" class="collapsed">
         <% @my_requests.each do |request| %>
         <div data-action="click->toggle#toggle">
-          <h2> Vous avez envoyé une demande à : <%= request.match.user.nickname %>!</h2>
+          <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
           <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
           <% if request.status == "refused" %>
           <p><strong> Votre match a été annulé </strong> </p>
@@ -40,34 +53,35 @@
         </div>
       </div>
 
-      <div class="card-vinted" data-controller="toggle" class="collapsed">
-        <% @requests.each do |request| %>
-        <div data-action="click->toggle#toggle">
-          <h2> <%= request.user.nickname %> vous défie ! </h2>
-          <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
-          <% if request.status == "refused" %>
-          <p><strong>Votre match a été refusé </strong> </p>
-          <% elsif request.status == "accepted" %>
-          <p><strong>Votre match a été accepté!</strong> </p>
-          <% end %>
-        </div>
-        <div data-toggle-target="content">
-          <p><strong>Adresse: </strong><%= request.match.address %></p>
-          <p><strong>Niveau: </strong><%= request.match.level.to_i %></p>
-          <p><strong>Date: </strong><%= request.match.date %></p>
-          <p style="text-align: end; font-size: 22px"><strong><%= request.match.price.to_i %>€</strong></p>
-          <%# <p><%= request.status %>
-        <div class="button-container">
-          <% if request.status == "pending" %>
-            <div class="button-wrapper">
-              <button class="accept-button button-half-width"><%= link_to "Accepter", accept_request_path(request), data: { turbo_method: :patch } %></button>
-              <button class="refuse-button button-half-width"><%= link_to "Refuser", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+      <% @requests.each do |request| %>
+        <div class="card-vinted" data-controller="toggle" class="collapsed">
+          <div data-action="click->toggle#toggle">
+            <h2> <%= request.user.nickname %> veut jouer avec vous! </h2>
+            <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
+            <% if request.status == "refused" %>
+            <p><strong>Votre match a été refusé </strong> </p>
+            <% elsif request.status == "accepted" %>
+            <p><strong>Votre match a été accepté!</strong> </p>
+            <% end %>
+          </div>
+          <div data-toggle-target="content">
+            <p><strong>Adresse: </strong><%= request.match.address %></p>
+            <p><strong>Niveau: </strong><%= request.match.level.to_i %></p>
+            <p><strong>Date: </strong><%= request.match.date %></p>
+            <p style="text-align: end; font-size: 22px"><strong><%= request.match.price.to_i %>€</strong></p>
+            <%# <p><%= request.status %>
+            <div class="button-container">
+              <% if request.status == "pending" %>
+                <div class="button-wrapper">
+                  <button class="accept-button button-half-width"><%= link_to "Accepter", accept_request_path(request), data: { turbo_method: :patch } %></button>
+                  <button class="refuse-button button-half-width"><%= link_to "Refuser", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         </div>
-        <% end %>
-        </div>
-      </div>
+      <% end %>
+
     </div>
     <div data-message-target="notification" class="content">
       <!-- Contenu de la colonne des notifications -->
