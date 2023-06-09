@@ -9,10 +9,14 @@
 .btn-ace {
   height: 40px;
   width: 50%;
-  background-color: orange;
+  background-color: #ac552c;
   border: none;
+  color: white;
 }
 
+.btn-ace a {
+  color: white;
+}
 .btn-field {
   display: flex;
   justify-content: end;
