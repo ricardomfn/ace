@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.hideAllContent()
+    this.showMessage()
     console.log("hello")
   }
 
