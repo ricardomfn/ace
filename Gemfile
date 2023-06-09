@@ -34,7 +34,7 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-gem 'sweetalert2-rails'
+# gem 'sweetalert2-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
