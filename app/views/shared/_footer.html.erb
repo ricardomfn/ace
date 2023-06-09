@@ -1,24 +1,40 @@
-<div class="footer">
+
   <div class="footer-links">
-    <%= link_to root_path, class: "" do %>
-      <i class="fa-solid fa-house"></i>
-    <% end %>
 
-    <%= link_to root_path, class: "" do %>
-      <i class="fa-solid fa-map"></i>
-    <% end %>
+    <div class="logo-footer">
+      <%= link_to root_path, class: "" do %>
+        <i class="fa-solid fa-house"></i>
+        <p>Home</p>
+      <% end %>
+    </div>
 
-    <%= link_to new_match_path, class: "" do %>
-      <i class="fa-solid fa-plus"></i>
-    <% end %>
+    <div class="logo-footer">
+      <%= link_to root_path, class: "" do %>
+        <i class="fa-solid fa-map"></i>
+        <p>Carte</p>
+      <% end %>
+    </div>
 
-    <%= link_to profile_path, class: "" do %>
-      <i class="fa-solid fa-user"></i>
-    <% end %>
+    <div class="logo-footer">
+      <%= link_to new_match_path, class: "" do %>
+        <i class="fa-solid fa-plus"></i>
+        <p>Match</p>
+      <% end %>
+    </div>
 
-    <%= link_to dashboard_path, class: "" do %>
-      <i class="fa-solid fa-message"></i>
-    <% end %>
+    <div class="logo-footer">
+      <%= link_to profile_path, class: "" do %>
+        <i class="fa-solid fa-user"></i>
+        <p>Profil</p>
+      <% end %>
+    </div>
+
+    <div class="logo-footer">
+      <%= link_to dashboard_path, class: "" do %>
+        <i class="fa-solid fa-message"></i>
+        <p>Message</p>
+      <% end %>
+    </div>
 
   </div>
-</div>
+
