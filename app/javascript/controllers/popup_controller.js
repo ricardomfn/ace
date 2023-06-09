@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import Swal from 'sweetalert2';
 
 // Connects to data-controller="popup"
 export default class extends Controller {

@@ -3,7 +3,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-
-//= require sweetalert
-import "./swal.js"
-//= require sweetalert2
