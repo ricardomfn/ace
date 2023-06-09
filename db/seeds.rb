@@ -15,10 +15,6 @@ User.destroy_all
 Membership.destroy_all
 
 
-avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109281/samples/people/kitchen-bar.jpg")
-avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109285/samples/people/boy-snow-hoodie.jpg")
-avatar3 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109280/samples/animals/cat.jpg")
-avatar4 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109283/samples/people/smiling-man.jpg")
 
 
 user1 = User.new({
@@ -28,46 +24,50 @@ user1 = User.new({
   last_name: "Martins",
   nickname:"Ricky",
   birth_date: "05/07/1992"
-})
-user1.photo.attach(io: avatar1, filename:"Mon avatar1")
-user1.save!
+  })
+  avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109281/samples/people/kitchen-bar.jpg")
+  user1.photo.attach(io: avatar1, filename:"Mon avatar1")
+  user1.save!
 
 
 
-user2 = User.new({
-  email: "jo@gmail.com",
-  password: "123456",
-  first_name: "Jo",
-  last_name: "Magt",
-  nickname: "Jo",
-  birth_date: "05/08/1992"
-})
-user2.photo.attach(io: avatar2, filename:"Mon avatar2")
-user2.save!
+  user2 = User.new({
+    email: "jo@gmail.com",
+    password: "123456",
+    first_name: "Jo",
+    last_name: "Magt",
+    nickname: "Jo",
+    birth_date: "05/08/1992"
+    })
+    avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109285/samples/people/boy-snow-hoodie.jpg")
+    user2.photo.attach(io: avatar2, filename:"Mon avatar2")
+    user2.save!
 
 
-user3 = User.new({
-  email: "kenza@gmail.com",
-  password: "kenza@gmail.com",
-  first_name: "Kenza",
-  last_name: "Bouachik",
-  nickname: "Kenza",
-  birth_date: "05/08/1992"
-})
-user3.photo.attach(io: avatar3, filename:"Mon avatar3")
-user3.save!
+    user3 = User.new({
+      email: "kenza@gmail.com",
+      password: "kenza@gmail.com",
+      first_name: "Kenza",
+      last_name: "Bouachik",
+      nickname: "Kenza",
+      birth_date: "05/08/1992"
+      })
+      avatar3 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109280/samples/animals/cat.jpg")
+      user3.photo.attach(io: avatar3, filename:"Mon avatar3")
+      user3.save!
 
 
-user4 = User.new({
-  email: "Mathieu@gmail.com",
-  password: "Mathieu@gmail.com",
-  first_name: "Mathieu",
-  last_name: "Jelsch",
-  nickname: "Le M",
-  birth_date: "05/08/1992"
-})
-user4.photo.attach(io: avatar4, filename:"Mon avatar4")
-user4.save!
+      user4 = User.new({
+        email: "Mathieu@gmail.com",
+        password: "Mathieu@gmail.com",
+        first_name: "Mathieu",
+        last_name: "Jelsch",
+        nickname: "Le M",
+        birth_date: "05/08/1992"
+        })
+        avatar4 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109283/samples/people/smiling-man.jpg")
+        user4.photo.attach(io: avatar4, filename:"Mon avatar4")
+        user4.save!
 
 
 
@@ -80,12 +80,11 @@ match1 = Match.new({
   modality: "simple",
   price: "10",
   level: "500",
-  date: DateTime.now.strftime("%m/%d/%Y %H")
+  date: DateTime.now
 })
 match1.user = user1
 match1.save!
 
-p match1
 
 match2 = Match.new({
   address: "56 rue oberkampf, Paris",
@@ -93,7 +92,7 @@ match2 = Match.new({
   modality: "simple",
   price: "67",
   level: "1000",
-  date: (DateTime.now + 2).strftime("%m/%d/%Y %H")
+  date: (DateTime.now + 2)
 })
 match2.user = user2
 match2.save!
@@ -105,7 +104,7 @@ match3 = Match.new({
   modality: "simple",
   price: "50",
   level: "50",
-  date: (DateTime.now + 1).strftime("%m/%d/%Y %H")
+  date: (DateTime.now + 1)
 })
 match3.user = user3
 match3.save!
