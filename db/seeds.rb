@@ -15,8 +15,8 @@ User.destroy_all
 Membership.destroy_all
 
 
-avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046771/avatar-de-personne-icone-homme_rznm1h.png")
-avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686046772/avatar-de-personne-icone-femme_kqiadz.png")
+avatar1 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109281/samples/people/kitchen-bar.jpg")
+avatar2 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109285/samples/people/boy-snow-hoodie.jpg")
 avatar3 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109280/samples/animals/cat.jpg")
 avatar4 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1685109283/samples/people/smiling-man.jpg")
 
@@ -80,7 +80,7 @@ match1 = Match.new({
   modality: "simple",
   price: "10",
   level: "500",
-  date: "05/08/2023"
+  date: DateTime.now.strftime("%m/%d/%Y %H")
 })
 match1.user = user1
 match1.save!
@@ -93,19 +93,19 @@ match2 = Match.new({
   modality: "simple",
   price: "67",
   level: "1000",
-  date: "10/08/2023"
+  date: (DateTime.now + 2).strftime("%m/%d/%Y %H")
 })
 match2.user = user2
 match2.save!
 
 
 match3 = Match.new({
-  address: " 1 rue de Bezons, Carrières-sur-seine",
+  address: " 3 rue Gabriel Péri, Houilles",
   match_type: "amical",
   modality: "simple",
   price: "50",
   level: "50",
-  date: "10/09/2023"
+  date: (DateTime.now + 1).strftime("%m/%d/%Y %H")
 })
 match3.user = user3
 match3.save!
