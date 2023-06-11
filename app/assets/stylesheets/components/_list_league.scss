@@ -1,0 +1,51 @@
+// .list-style {
+//   list-style-type: none;
+// }
+
+// .list-style .card {
+//   border-bottom: 1px solid black;
+// }
+
+// .list-style .card:last-child {
+//   border-bottom: none;
+// }
+
+.list-cont {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #000;
+  margin: 5px;
+}
+
+.list-cont a {
+  text-decoration: none;
+}
+
+.list-style .card {
+  border-bottom: 1px solid black;
+}
+
+.list-style .card:last-child {
+  border-bottom: none;
+}
+
+
+.card-title {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card-text {
+  color: black;
+  font-size: 10px;
+  // border-bottom: 1px solid black;
+}
+
+.flexible {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid black;
+    align-items: center;
+}

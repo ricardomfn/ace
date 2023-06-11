@@ -1,42 +1,50 @@
 <%= render 'shared/navbar_general' %>
 
-<div class="container text-center"> <!-- Added 'text-center' class -->
-  <div class="profile" style="margin-bottom: 20px; margin-top: 20px">
-    <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
-    <h3><%= current_user.nickname %></h3>
-    <h4><%= current_user.points %>pts</h4>
+<div class="container-global">
+  <div class="container text-center"> <!-- Added 'text-center' class -->
+    <div class="profile" style="margin-bottom: 20px; margin-top: 20px">
+      <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
+      <h3><%= current_user.nickname %></h3>
+      <h4><%= current_user.points %>pts</h4>
+    </div>
+
+    <div class="container">
+      <!-- Create a league button -->
+      <button class="button-17" >
+        <%= link_to "Créer une ligue", new_league_path(@league) %>
+      </button>
+      <!-- Add a league button -->
+      <%# <button class="btn btn-secondary" style="background-color: white; color: white;">
+        <%= link_to "Rechercher une ligue", leagues_path %>
+
+      <div class="custom-container">
+        <ul class="nav nav-pills mb-3 mt-3 nav-fill" id="" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-button" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Mes ligues</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-button" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Historique</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="container">
-    <!-- Create a league button -->
-    <button class="btn btn-secondary" style="background-color: white; color: white;">
-      <%= link_to "Créer une ligue", new_league_path(@league) %>
-    </button>
-    <!-- Add a league button -->
-    <button class="btn btn-secondary" style="background-color: white; color: white;">
-      <%= link_to "Rechercher une ligue", leagues_path %>
-    </button>
-
-    <ul class="nav nav-pills mb-3 mt-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Mes ligues</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Historique</button>
-      </li>
-    </ul>
-
-    <div class="tab-content" id="pills-tabContent">
+    <div class="tab-content list-cont" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-        <div class="row" style="">
+        <div class="row list-style">
           <% @leagues.each do |league| %>
             <div class="col-md-4 mt-2">
               <!-- League card -->
               <%= link_to league_path(league) do %>
-                <div class="card mb-4" style="background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8)), url('<%= asset_path('ace-tennis-terre-battue.png') %>'); background-size: cover;height: 100px;">
+                <div class="flexible">
                   <div class="card-body">
                     <h4 class="card-title"><%= league.name %></h4>
                     <p class="card-text">Created by: <%= league.user.first_name %></p>
+                  </div>
+                  <div>
+                    <i class="fa-solid fa-arrow-right fa-xl" style="color: #3b69ba;"></i>
                   </div>
                 </div>
               <% end %>
