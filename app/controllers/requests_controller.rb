@@ -25,7 +25,7 @@ class RequestsController < ApplicationController
     @request = Request.new
     @request.match = @match
     @request.user = current_user
-    @request.save if Request.where(user_id: current_user).count < 1
+    @request.save if Request.where(user_id: current_user, match_id: @match).count < 1
     # redirect_to la pop-up
   end
 
