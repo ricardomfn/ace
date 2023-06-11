@@ -1,11 +1,30 @@
-<h1>Indiquez le gagnant du défis</h1>
+<div class="text-center mb-4">
+  <h1 style="color: #ac552c; font-size: 26px;"><strong>Indiquez le gagnant du défi</strong></h1>
+</div>
 
-<div class="container">
+<%= simple_form_for(@match) do |f| %>
+  <%= f.input :winner,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'category-wrapper',
+              item_wrapper_class: 'category-item',
+              input_html: { class: 'category-selector' },
+              collection: [@match.user.name, @request.user.name],
+              label: "" %>
+
+  <div class="d-flex justify-content-center">
+    <%= f.submit "Valider", class: "btn btn-ace mt-4" %>
+  </div>
+<% end %>
+
+
+
+<%# <div class="container">
   <%= simple_form_for(@match) do |f| %>
 
-    <%= f.input :winner, as: :check_boxes,
-      collection: [@match.user.name, @request.user.name ],
-      label: "Gagnant:" %>
-    <%= f.submit "Valider" %>
-  <% end %>
-</div>
+    <%# <%= f.input :winner, as: :check_boxes, %>
+      <%# collection: [@match.user.name, @request.user.name ], %>
+      <%# label: "Gagnant:" %>
+    <%# <%= f.submit "Valider" %>
+  <%# <% end %>
+<%# </div> %>
