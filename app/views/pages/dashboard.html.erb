@@ -29,29 +29,29 @@
       <% end %>
       <% end %>
 
-      <div class="card-vinted" data-controller="toggle" class="collapsed">
-        <% @my_requests.each do |request| %>
-        <div data-action="click->toggle#toggle">
-          <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
-          <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
-          <% if request.status == "refused" %>
-          <p><strong> Votre match a été annulé </strong> </p>
-          <% end %>
-        </div>
-        <div data-toggle-target="content">
-          <p> <strong>Adresse: </strong> <%= request.match.address %></p>
-          <p><strong>Niveau: </strong><%= request.match.level.to_i %></p>
-          <p><strong>Date: </strong><%= request.match.date %></p>
-          <p style="text-align: end; font-size: 22px"><strong><%= request.match.price.to_i %>€</strong></p>
-          <%# <p><strong>Son statut est : </strong><%= request.status %>
-          <div class="button-container">
-            <% if request.status == "pending" %>
-              <button class="refuse-button button-full-width"><%= link_to "Annuler le match", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+      <% @my_requests.each do |request| %>
+        <div class="card-vinted" data-controller="toggle" class="collapsed">
+          <div data-action="click->toggle#toggle">
+            <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
+            <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
+            <% if request.status == "refused" %>
+            <p><strong> Votre match a été annulé </strong> </p>
             <% end %>
           </div>
-        <% end %>
+          <div data-toggle-target="content">
+            <p> <strong>Adresse: </strong> <%= request.match.address %></p>
+            <p><strong>Niveau: </strong><%= request.match.level.to_i %></p>
+            <p><strong>Date: </strong><%= request.match.date %></p>
+            <p style="text-align: end; font-size: 22px"><strong><%= request.match.price.to_i %>€</strong></p>
+            <%# <p><strong>Son statut est : </strong><%= request.status %>
+            <div class="button-container">
+              <% if request.status == "pending" %>
+                <button class="refuse-button button-full-width"><%= link_to "Annuler le match", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
 
       <% @requests.each do |request| %>
         <div class="card-vinted" data-controller="toggle" class="collapsed">
