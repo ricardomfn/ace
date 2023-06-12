@@ -12,6 +12,19 @@
               collection: [@match.user.name, @request.user.name],
               label: "" %>
 
+  <h3>Score du gagnant</h3>
+  <%= f.input :winner_score,
+              as: :select,
+              collection: 1..8,
+              include_blank: false,
+              label: ""%>
+  <%= f.input :loser_score,
+              as: :select,
+              collection: 1..8,
+              include_blank: false,
+              label: ""%>
+
+
   <div class="d-flex justify-content-center">
     <%= f.submit "Valider", class: "btn btn-ace mt-4" %>
   </div>

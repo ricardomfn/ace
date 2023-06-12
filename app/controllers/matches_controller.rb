@@ -70,8 +70,15 @@ class MatchesController < ApplicationController
     redirect_to profile_path(points_change: @points_change)
   end
 
+  def match_score
+    @match = Match.find(params[:id])
+    @request = Request.where(match: @match).first
+    @match.winner = params[:match][:winner]
+    @match.update(match_params)
+  end
+
   private
   def match_params
-    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type, :winner)
+    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type, :winner, :winner_score, :loser_score)
   end
 end
