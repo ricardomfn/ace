@@ -55,17 +55,19 @@ class MatchesController < ApplicationController
     @match.update(match_params)
     @user = User.where(nickname: params[:match][:winner]).first
     if @user.name == @match.user.name
-      @match.user.points += 50
-      @request.user.points -= 50
+      @points_change = 50
+      @match.user.points += @points_change
+      @request.user.points -= @points_change
     else
-      @request.user.points += 50
-      @match.user.points -= 50
+      @points_change = -50
+      @match.user.points += @points_change
+      @request.user.points -= @points_change
     end
     @match.user.points = [0, @match.user.points].max
     @request.user.points = [0, @request.user.points].max
     @match.user.save
     @request.user.save
-    redirect_to profile_path
+    redirect_to profile_path(points_change: @points_change)
   end
 
   private
