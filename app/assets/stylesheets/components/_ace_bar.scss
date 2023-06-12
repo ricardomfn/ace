@@ -1,0 +1,63 @@
+.ace-bar {
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid #253343;
+}
+
+.ace-regul {
+  margin-top: 10px;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.ace-bar::placeholder {
+  font-size: 18px;
+  color: #253343;
+  font-weight: bold;
+}
+
+.div-global{
+  height: 45vh;
+  background-color: #EAF959;
+}
+
+.search-home {
+  background-image: url("https://res.cloudinary.com/diuabdrmm/image/upload/v1686577107/bro_vij7ko.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 30vh;
+}
+
+.search-home p {
+// width: 258px;
+// height: 34px;
+// left: 54px;
+// top: 43px;
+
+font-family: 'CherryBomb-Regular';
+font-style: normal;
+font-weight: 400;
+font-size: 80px;
+display: flex;
+align-items: center;
+text-align: center;
+padding-left: 30%;
+color: #253343;
+}
+
+.font-card {
+  background-color: #EAF959;
+}
+
+.devant-card {
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.transparent-input:focus {
+  background-color: transparent;
+}
+
