@@ -108,11 +108,14 @@ request2 = Request.new(status: 0, match_id: match2.id, user_id: user1.id)
 request2.save!
 
 
-league1 = League.new(name: "Le Wagon 1211", user_id: user2.id)
+
+league1 = League.new(name: "Monde", user_id: user2.id)
+league1.image = "icon6.jpg"
 league1.save!
 
 
-league2 = League.new(name: "La très grande ligue", user_id: user1.id)
+league2 = League.new(name: "Paris", user_id: user1.id)
+league2.image = "icon6.jpg"
 league2.save!
 
 

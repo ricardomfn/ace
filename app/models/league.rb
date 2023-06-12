@@ -4,4 +4,8 @@ class League < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true, uniqueness: true
+  validates :image, presence: true, uniqueness: true
+
+  CATEGORIES = ["icon1.jpg", "icon2.jpg", "icon6.jpg", "icon4.jpg", "icon7.jpg"]
+
 end

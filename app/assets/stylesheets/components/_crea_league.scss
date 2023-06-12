@@ -1,0 +1,47 @@
+.ligue-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+}
+
+.league_image{
+  display: flex;
+}
+
+.ligue-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.ligue-item {
+  flex: 0 0 30%;
+}
+
+.ligue-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.ligue-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+
+}
+
+.ligue-selector:checked + label {
+  border: solid 1px red;
+}
+
+.form-check-label img{
+  display:flex;
+  width:50px;
+  height:50px;
+  border-radius:50%
+}
