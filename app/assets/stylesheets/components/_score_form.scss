@@ -1,3 +1,61 @@
+.fade-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.fade-wrapper h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+  pointer-events: none;
+}
+
+.fade-wrapper.fade-out h4 {
+  opacity: 0;
+}
+
+
+.fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.won {
+  color: green;
+}
+
+.lost {
+  color: red;
+}
+
+
+
 .category-wrapper {
   display: flex;
   justify-content: space-around;

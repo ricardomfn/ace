@@ -2,15 +2,23 @@
 
 <div class="container-global">
   <div class="container text-center"> <!-- Added 'text-center' class -->
-    <div class="profile" style="margin-bottom: 20px; margin-top: 20px">
+    <div class="profile" style="margin-bottom: 20px; margin-top: 20px" data-controller="fade-out">
       <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
-      <h3><%= current_user.nickname %></h3>
-      <h4><%= current_user.points %>pts</h4>
+      <h3 style="font-size: 24px; font-weight: bold;"><%= current_user.nickname %></h3>
+      <div class="fade-wrapper mt-3 mb-4">
+        <h4 class="fade-out" style="font-size: 22px; font-weight: bold;"><%= current_user.points - params[:points_change].to_i %>pts</h4>
+        <h4 class="fade-in" style="font-size: 22px; font-weight: bold;"><%= current_user.points %>pts</h4>
+      </div>
+      <% if params[:points_change] %>
+        <% points_change = params[:points_change].to_i %>
+        <span data-fade-out-target="change" style="font-size: 22px;" class="fade-in <%= points_change.positive? ? 'won' : 'lost' %>"><%=  '+' if points_change.positive?%><%= points_change %> pts </span>
+      <% end %>
     </div>
+
 
     <div class="container">
       <!-- Create a league button -->
-      <button class="button-17" >
+      <button class="button-17 mt-3" >
         <%= link_to "Créer une ligue", new_league_path(@league) %>
       </button>
       <!-- Add a league button -->
