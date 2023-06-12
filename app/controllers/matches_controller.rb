@@ -6,13 +6,21 @@ class MatchesController < ApplicationController
     if params[:date].present?
       @matches = @matches.where(date: params[:date])
     end
+
+    @markers = @matches.geocoded.map do |match|
+      {
+        lat: match.latitude,
+        lng: match.longitude
+      }
+    end
   end
 
   def show
     @match = Match.find(params[:id])
     @request = Request.new
+
     if @match.geocoded?
-      @marker = [
+      @markers = [
         {
           lat: @match.latitude,
           lng: @match.longitude
