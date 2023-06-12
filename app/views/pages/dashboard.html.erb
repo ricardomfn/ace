@@ -25,7 +25,7 @@
               <h2 style="color: red"> Rentrez le score du défi avec <%= request.user.nickname %></h2>
               </div>
               <div data-toggle-target="content">
-                <button class="btn-ace mt-5"><%= link_to "Rentrer le score", edit_match_path(request.match) %></button>
+                <button class="btn-ace"><%= link_to "Rentrer le score", edit_match_path(request.match), class: "" %></button>
               </div>
           </div>
         <% end %>
