@@ -63,9 +63,19 @@
 
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
         <!-- History section -->
-        <p style="color: #1EDD88;"> - Victoire face à Martin </p>
-        <p style="color: #1EDD88;"> - Victoire face à Ermanno </p>
-        <p style="color: #FD1015;"> - Défaite face à Luc </p>
+        <% @matches_user.each do |match| %>
+        <%= match.winner %>
+        <%= match.winner_score %>
+        <%= match.loser_score %>
+          <% if match.winner == match.user %>
+            <%= loser = Request.where(match: match).first.user.nickname %>
+          <% else %>
+            <%= loser = match.user.nickname %>
+          <% end %>
+        <% end %>
+
+
+
       </div>
     </div>
   </div>
