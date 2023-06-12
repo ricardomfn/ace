@@ -1,18 +1,21 @@
-<div class="font-card">
-<div class="div-global">
-  <div data-controller="map-display" class="search-home">
-    <%# <%= render 'shared/navbar_index' %>
-    <p>ACE</p>
-  </div>
-  <div class="ace-regul">
-    <%= render 'search_bar'%>
-  </div>
-</div>
+<div data-controller="map-display">
+  <div class="font-card">
+    <div class="div-global">
+      <div class="search-home">
+        <%# <%= render 'shared/navbar_index' %>
+        <p>ACE</p>
+      </div>
+      <div class="ace-regul">
+        <%= render 'search_bar'%>
+      </div>
+    </div>
 
 
-  <div class="devant-card">
-    <%= render 'card', matches: @matches%>
-    <%= render 'shared/publicite' %>
+    <div class="devant-card" data-map-display-target="bloc">
+      <%= render 'card', matches: @matches%>
+      <%= render 'shared/publicite' %>
+    </div>
     <%= render 'map_display' %>
   </div>
+  <%= render 'shared/footer' %>
 </div>
