@@ -1,16 +1,18 @@
-<div data-controller="map-display">
-  <div class="search-home">
-    <div class="container">
-      <%= render 'shared/navbar_index' %>
-      <h1 style="color: white; font-size: 35px"><strong>Bouge ton Ace!</strong></h1>
-      <div class="search-filter">
-        <%= render 'search_bar'%>
-        <%= render 'filter_form'%>
-      </div>
-    </div>
+<div class="font-card">
+<div class="div-global">
+  <div data-controller="map-display" class="search-home">
+    <%# <%= render 'shared/navbar_index' %>
+    <p>ACE</p>
   </div>
+  <div class="ace-regul">
+    <%= render 'search_bar'%>
+  </div>
+</div>
 
-  <%= render 'card', matches: @matches%>
-  <%= render 'shared/publicite' %>
-  <%= render 'map_display' %>
+
+  <div class="devant-card">
+    <%= render 'card', matches: @matches%>
+    <%= render 'shared/publicite' %>
+    <%= render 'map_display' %>
+  </div>
 </div>
