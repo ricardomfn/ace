@@ -23,7 +23,11 @@
   </head>
 
   <body>
-    <%= render 'shared/footer' %>
-    <%= yield %>
+    <div data-controller="circle">
+      <% unless controller_name == 'pages' && action_name == 'desk' %>
+      <%= render 'shared/footer' %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

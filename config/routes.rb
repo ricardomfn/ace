@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'profile/show'
   get 'stimulus/popup'
   devise_for :users
-  root to: "matches#index"
+  root to: "pages#desk"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :requests, only: [:index, :show, :destroy]
   get "games", to: "requests#games"
   get "dashboard", to: "pages#dashboard"
+  get "desk", to: "pages#desk"
 
   resources :leagues do
     resources :memberships, only: [ :new, :create ]

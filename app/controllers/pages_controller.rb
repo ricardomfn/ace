@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: :desk
+
+
   def profile
     user = current_user.id
     # membership = Membership.find(params[])
@@ -18,5 +21,8 @@ class PagesController < ApplicationController
   def dashboard
     @my_requests = Request.where(user: current_user)
     @requests = Request.where(match: current_user.matches)
+  end
+
+  def desk
   end
 end

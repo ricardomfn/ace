@@ -1,0 +1,59 @@
+html, body {
+  min-height: 100vh;
+}
+
+.font-img {
+  margin: 0;
+  padding: 0;
+  background-color: #EAF959;
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://res.cloudinary.com/diuabdrmm/image/upload/v1686577107/bro_vij7ko.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+
+.contour {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.contour > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 7vh;
+}
+
+.contour p {
+  font-family: 'CherryBomb-Regular';
+font-style: normal;
+font-weight: 400;
+font-size: 100px;
+display: flex;
+align-items: center;
+text-align: center;
+padding-left: 24%;
+color: #253343;
+padding-top: 28vh;
+margin-bottom: 0%;
+
+}
+
+.discover {
+width: 177px;
+height: 53px;
+left: 106px;
+top: 422px;
+
+background: #253343;
+border-radius: 20px;
+color: white;
+font-family: 'CherryBomb-Regular';
+font-size: 21px;
+margin-bottom: 100px;
+margin-left: 14%;
+}

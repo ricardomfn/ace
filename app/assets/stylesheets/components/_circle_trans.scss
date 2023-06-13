@@ -1,0 +1,39 @@
+.transition-out {
+  animation: circle-out 0.5s ease-out;
+  clip-path: circle(100% at 50% 50%);
+  opacity: 1;
+  z-index: 2;
+}
+
+.transition-in {
+  animation: circle-in 1.5s ease-in;
+  clip-path: circle(0% at 50% 50%);
+  opacity: 0;
+  z-index: 1;
+}
+
+@keyframes circle-out {
+  0% {
+    clip-path: circle(100% at 50% 50%);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes circle-in {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+    transform: scale(1);
+    opacity: 1;
+  }
+}

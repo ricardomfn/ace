@@ -1,0 +1,19 @@
+<body class="jaune">
+  <div class="font-img" data-circle-target="page1">
+    <div class="contour" >
+      <div>
+        <p>ACE</p>
+
+        <% if user_signed_in? %>
+          <%= link_to matches_path do %>
+          <button class="discover" data-action="click->circle#transition">Discover</button>
+          <% end %>
+        <% else %>
+          <%= link_to user_session_path do %>
+          <button class="discover" data-action="click->circle#transition">Discover</button>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</body>
