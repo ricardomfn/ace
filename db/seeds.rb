@@ -11,8 +11,11 @@ require "date"
 League.destroy_all
 Request.destroy_all
 Match.destroy_all
+Message.destroy_all
+UserChatroom.destroy_all
 User.destroy_all
 Membership.destroy_all
+Chatroom.destroy_all
 
 user1 = User.new({
   email: "ricardo@gmail.com",
