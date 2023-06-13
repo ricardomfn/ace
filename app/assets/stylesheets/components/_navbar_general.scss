@@ -1,6 +1,7 @@
 .navbar {
-  background-color: #EAF959;
-  overflow: visible;
+
+  background-color: transparent;
+  overflow: hidden;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -13,5 +14,6 @@
   // padding: 15px;
   color: white;
   padding: 15px;
-
 }
+
+
