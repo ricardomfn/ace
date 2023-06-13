@@ -3,8 +3,13 @@ class MatchesController < ApplicationController
   def index
     @matches = Match.order(date: :desc, level: :asc)
 
+    if params[:address].present?
+      @matches = @matches.where("address ILIKE ?", "%#{params[:address]}%")
+    end
+
     if params[:date].present?
-      @matches = @matches.where(date: params[:date])
+      @matches = @matches.select { |m| m.date.to_date == Date.parse(params[:date]) }
+      @matches = Match.where(id: @matches.map(&:id))
     end
 
     @markers = @matches.geocoded.map do |match|
