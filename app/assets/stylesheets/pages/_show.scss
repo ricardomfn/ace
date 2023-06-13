@@ -1,7 +1,7 @@
 .hexag {
   width: 80px;
   height: 80px;
-  background-color: orange; /* Couleur de fond de l'hexage */
+  background-color: #EAF959; /* Couleur de fond de l'hexage */
   position: relative;
   border-radius: 50%;
   display: flex;
@@ -17,6 +17,8 @@
 
 .banner{
   text-align: center;
+  color: #253343;
+  font-family: "CherryBomb-Regular";
 }
 
 // .match-infos {
@@ -26,10 +28,32 @@
 .user-infos {
   display: flex;
   align-items: bottom;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .play-btn {
   display: flex;
   justify-content: center;
+}
+
+.size-adress{
+  font-size: 25px;
+}
+
+.avatar-match{
+  position: relative;
+  top: -30px;
+  left: 70px;
+}
+
+.card-match{
+  border-radius: 10px;
+  padding: 10px;
+  height: 180px;
+}
+
+.position-chat{
+  position: relative;
+  top: 110px;
+  right: 10px;
 }
