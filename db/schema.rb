@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_120526) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_120722) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_120526) do
     t.string "match_type"
     t.string "modality"
     t.string "winner"
-    t.integer "score"
+    t.integer "winner_score"
     t.integer "price"
     t.integer "level"
     t.datetime "date"
@@ -66,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_120526) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "archived", default: false
+    t.integer "loser_score"
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 

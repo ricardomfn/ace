@@ -5,7 +5,7 @@ import mapboxgl from "mapbox-gl"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    marker: Array
+    markers: Array
   }
 
   connect() {
@@ -16,26 +16,21 @@ export default class extends Controller {
       style: "mapbox://styles/kenzabouachik/clik9gg3f00ed01qv0qjo6uaz"
     })
 
-    this.#addMarkerToMap()
-    this.#fitMapToMarker()
+    this.#addMarkersToMap()
+    this.#fitMapToMarkers()
   }
 
-  #addMarkerToMap() {
-    this.markerValue.forEach((marker) => {
-      // const customMarker = document.createElement("div")
-      // customMarker.innerHTML = marker.marker_html
-      // customMarker
+  #addMarkersToMap() {
+    this.markersValue.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
     })
   }
 
-
-  #fitMapToMarker() {
+  #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markerValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 })
+    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
-
 }
