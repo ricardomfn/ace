@@ -59,6 +59,7 @@ class MatchesController < ApplicationController
     @match.winner = params[:match][:winner]
     @match.update(match_params)
     @user = User.where(nickname: params[:match][:winner]).first
+    raise
     if @user.name == @match.user.name
       @points_change = 50
       @match.user.points += @points_change
@@ -73,13 +74,6 @@ class MatchesController < ApplicationController
     @match.user.save
     @request.user.save
     redirect_to profile_path(points_change: @points_change)
-  end
-
-  def match_score
-    @match = Match.find(params[:id])
-    @request = Request.where(match: @match).first
-    @match.winner = params[:match][:winner]
-    @match.update(match_params)
   end
 
   private
