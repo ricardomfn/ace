@@ -9,6 +9,7 @@ class LeaguesController < ApplicationController
   # GET /leagues/1
   def show
     @league = League.find(params[:id])
+    @ordered_members = @league.memberships.sort_by { |membership| -membership.user.points }
   end
 
    # GET /leagues/new

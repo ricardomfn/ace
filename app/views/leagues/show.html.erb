@@ -1,50 +1,77 @@
 <%= render 'shared/navbar_general' %>
- <div class="league-container">
-  <h1><%= @league.name %></h1> <br>
-  <p>créé par : <%= @league.user.first_name %>
-  <%= link_to profile_path do %>
-  <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%> </p>
-  <% end %>
-  <% if @league.user == current_user %>
-  <button class="button-17">
-    <%= link_to "Ajouter un membre", new_league_membership_path(@league) %>
-  </button>
-  <%end %>
-</div>
+ <div class="league-container image-fond">
+  <h1 class="title"><%= @league.name %></h1> <br>
 
-<table class="membership-table">
-  <thead>
-    <tr>
-      <th>Classement</th>
-      <th>nom</th>
-      <th>points</th>
-      <th></th>
-    </tr>
-  </thead>
-   <tbody>
-    <% @league.memberships.sort_by { |membership| -membership.user.points }.each_with_index do |membership, index| %>
-      <tr>
-        <td>
-          <% if index == 0 %>
-            <i class="fa-solid fa-trophy" style="color: #ffd91a;"></i>
-          <% elsif index == 1 %>
-            <i class="fa-solid fa-trophy" style="color: #929290;"></i>
-          <% elsif index == 2 %>
-            <i class="fa-solid fa-trophy" style="color: #a06b22;"></i>
-          <% else %>
-            <p><%= index + 1 %> e</p>
+
+
+
+  <div class="podium">
+    <% if @ordered_members[1] %>
+      <div class="colonne">
+        <%= cl_image_tag @ordered_members[1].user.photo.key, class: "avatar m-3"%>
+        <div class="num-2">
+          <h2>2</h2>
+        </div>
+      </div>
+    <%end%>
+
+    <% if @ordered_members[0] %>
+      <div class="colonne">
+        <%= cl_image_tag @ordered_members[0].user.photo.key, class: "avatar m-3"%>
+        <div class="num-1">
+          <h2>1</h2>
+        </div>
+      </div>
+    <%end%>
+
+    <% if @ordered_members[2] %>
+      <div class="colonne">
+        <%= cl_image_tag @ordered_members[2].user.photo.key, class: "avatar m-3"%>
+        <div class="num-3">
+          <h2>3</h2>
+        </div>
+      </div>
+    <%end%>
+
+  </div>
+
+  <div class="classement ">
+    <% @ordered_members.to_a.each_with_index do |membership, index| %>
+      <div class="ranking-cards">
+        <div>
+          <p class="rank-index"><%= index + 1 %></p>
+        </div>
+
+        <div class="ranking-card">
+          <div>
+            <%= cl_image_tag membership.user.photo.key, class: "avatar m-3"%>
+          </div>
+
+          <div class="chat-infos">
+            <p style="font-size: 16px"><strong><%= membership.user.nickname %></strong></p>
+            <p><%= membership.user.points%> pts</p>
+          </div>
+
+          <% if @league.user == current_user %>
+            <div>
+              <%= link_to membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" do %>
+                <i class="fa-regular fa-trash-can poubelle", style="color: #000000;"></i>
+              <% end %>
+            </div>
           <% end %>
-        </td>
-        <td><%= membership.user.nickname %></td>
-        <td><%= membership.user.points %></td>
-        <% if @league.user == current_user %>
-          <td>
-          <%= link_to membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" do %>
-            <i class="fa-regular fa-trash-can" style="color: #000000;"></i>
-          <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+        </div>
+      </div>
+    <%end%>
+
+
+    <% if @league.user == current_user %>
+    <button class="btn-ace m-5">
+      <%= link_to "Ajouter un membre", new_league_membership_path(@league), style: "color: white"%>
+    </button>
+    <%end %>
+  </div>
+
+
+
+</div>
