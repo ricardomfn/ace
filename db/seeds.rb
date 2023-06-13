@@ -12,6 +12,7 @@ League.destroy_all
 Request.destroy_all
 Match.destroy_all
 Message.destroy_all
+Chatroom.destroy_all
 UserChatroom.destroy_all
 User.destroy_all
 Membership.destroy_all
@@ -113,12 +114,12 @@ request2.save!
 
 
 league1 = League.new(name: "Monde", user_id: user2.id)
-league1.image = "icon6.jpg"
+league1.image = "icon2.png"
 league1.save!
 
 
 league2 = League.new(name: "Paris", user_id: user1.id)
-league2.image = "icon6.jpg"
+league2.image = "icon3.png"
 league2.save!
 
 

@@ -1,7 +1,11 @@
 
-  <%= form_with url: matches_path, method: :get, class: "" do |form| %>
+  <%= form_with url: matches_path, method: :get, class: "" do |f| %>
     <div>
-      <%= form.text_field :address, class: "form-control ace-bar ace-pad transparent-input", placeholder: "Paris", value: params[:address] %>
-      <%= form.text_field :date, class: "form-control ace-bar transparent-input", placeholder: "29/05/2023", value: params[:date] %>
+
+      <%= text_field_tag :address, params[:address], class: "form-control ace-bar ace-pad transparent-input", placeholder: "Ville", value: ""%>
+      <%= text_field_tag :date, params[:date], class: "form-control ace-bar transparent-input", placeholder: "29/05/2023", data: { controller: "datepicker" }, value: ""%>
+      <%# <%= f.input :date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" }, class: "form-control ace-bar transparent-input" } %>
     </div>
   <% end %>
