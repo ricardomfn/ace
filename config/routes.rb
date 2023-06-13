@@ -23,4 +23,10 @@ Rails.application.routes.draw do
   patch 'accept_requests/:id', to: 'requests#accepted?', as: 'accept_request'
   patch 'refuse_requests/:id', to: 'requests#refused?', as: 'refuse_request'
 
+  resources :chatrooms, only: [] do
+    resources :messages, only: :create
+  end
+
+  get "/chatroom", to: "chatrooms#chatroom"
+
 end
