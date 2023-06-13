@@ -1,20 +1,20 @@
-<div class="navbar">
+  <div class="navbar">
     <div class="back-arrow">
       <%= link_to "javascript:history.back()" do %>
-      <i class="fa-solid fa-arrow-left fa-2xl" style="color: #ffffff;"></i>
+      <i class="fa-solid fa-arrow-left fa-2xl" style="color: #253343;"></i>
       <% end %>
     </div>
-    <div style="color: white;">
-    Création
+    <div style="color: #253343; font-family: Cherry Bomb;">
+      Création
     </div>
     <div class="logo">
       <%= link_to matches_path do %>
       <img src="https://res.cloudinary.com/diuabdrmm/image/upload/v1686218660/ace_vlx2py.png" alt="Logo" width="50" height="50">
       <% end %>
     </div>
-</div>
+  </div>
 
-<div class="d-flex justify-content-center">
+<%# <div class="d-flex justify-content-center">
   <div>
   <button class="number-wrapper">
      1
@@ -28,24 +28,46 @@
   </button>
     <p class="label">Nom</p>
   </div>
+</div> %>
+
+
+<div class="text-center mb-4 mt-4">
+  <h1 style="color: #253343; font-size: 26px; font-family: Cherry Bomb;"><strong>Choisi ton logo</strong></h1>
 </div>
 
+
 <%= simple_form_for(@league) do |f| %>
-<%= f.input :image,
-            as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'ligue-wrapper',
-            item_wrapper_class: 'ligue-item category-ligue',
-            input_html: {class: 'ligue-selector'},
-            collection: [[image_tag(League::CATEGORIES.first,alt: ""),League::CATEGORIES.first],[image_tag(League::CATEGORIES.second,alt: ""),League::CATEGORIES.second],[image_tag(League::CATEGORIES.third,alt: ""),League::CATEGORIES.third],[image_tag(League::CATEGORIES.fourth,alt: ""),League::CATEGORIES.fourth],[image_tag(League::CATEGORIES.fifth,alt: ""),League::CATEGORIES.fifth]] %>
-  <%= f.input :name, label: 'Nom', input_html: { class: 'name-field' } %>
-  <%= f.button :submit, class: 'button-17' do %>
-    Creation
-  <% end %>
+  <%= f.input :image,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'ligue-wrapper',
+              item_wrapper_class: 'ligue-item category-ligue',
+              input_html: { class: 'ligue-selector' },
+              collection: [
+                [image_tag(League::CATEGORIES.first, alt: ""), League::CATEGORIES.first],
+                [image_tag(League::CATEGORIES.second, alt: ""), League::CATEGORIES.second],
+                [image_tag(League::CATEGORIES.third, alt: ""), League::CATEGORIES.third],
+                [image_tag(League::CATEGORIES.fourth, alt: ""), League::CATEGORIES.fourth],
+                [image_tag(League::CATEGORIES.fifth, alt: ""), League::CATEGORIES.fifth],
+                [image_tag(League::CATEGORIES[5], alt: ""), League::CATEGORIES[5]]
+              ]
+  %>
+
+  <div class="text-center mb-4 mt-4">
+    <h1 style="color: #253343; font-size: 26px; font-family: Cherry Bomb; margin-bottom: 20px;"><strong>Nom de la ligue</strong></h1>
+  </div>
+  <div class="text-center">
+    <%= f.input :name, input_html: { class: 'name-field centered-input' }, label:false %>
+    <%= f.button :submit, "Création", class: "btn-ace mt-4" %>
+  </div>
 <% end %>
 
 
 
+
+
+<%#
+
 <div>
 <button class= 'button-17'>Suivant</button>
-</div>
+</div> %>
