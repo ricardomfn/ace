@@ -12,7 +12,6 @@ class PagesController < ApplicationController
     @matches_user = Match.where(user_id: current_user)
     @request = Request.where(match: @match_user)
     @request_user = Request.where(user_id: current_user)
-
   end
 
   def dashboard

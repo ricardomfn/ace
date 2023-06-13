@@ -65,59 +65,60 @@
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0" >
         <!-- History section -->
 
-        <% @matches_user.each do |match| %>
-        <div class="small-card" id="card-hist">
-          <div>
-             <% if match.winner != match.user.nickname %>
-              <% loser = Request.where(match: match).first.user %>
-              <%= cl_image_tag loser.photo.key, class: "avatar m-3"%>
-            <% else %>
-              <% loser = match.user %>
-              <%= cl_image_tag loser.photo.key, class: "avatar m-3"%>
-            <% end %>
-          </div>
-          <div class="m-2">
-            <%= match.winner %>
-          </div>
-          <div class="m-2">
-            <%= match.winner_score %>
-          </div>
-          <div class="m-2">
-            <%= match.loser_score %>
-          </div>
-          <div>
-            <% if match.winner == match.user.nickname %>
-              <%= loser = Request.where(match: match).first.user.nickname %>
-            <% else %>
-              <%= loser = match.user.nickname %>
-            <% end %>
-          </div>
-          <div>
-            <% if match.winner == match.user.nickname %>
-              <% loser = Request.where(match: match).first.user %>
-              <%= cl_image_tag loser.photo.key, class: "avatar m-3"%>
-            <% else %>
-              <% loser = match.user %>
-              <%= cl_image_tag loser.photo.key, class: "avatar m-3"%>
-            <% end %>
-          </div>
-          <div>
-            <% if match.winner == current_user.nickname %>
-            <p>Victoire</p>
-            <% else %>
-            <p>Défaite</p>
-            <% end %>
-          </div>
+  <% if @matches_user.present? %>
+    <% @matches_user.each do |match| %>
+      <div class="small-card" id="card-hist">
+        <div>
+          <% if match.winner != match.user.nickname %>
+            <% loser_request = Request.where(match: match).first %>
+            <% loser = loser_request.user if loser_request %>
+            <%= cl_image_tag loser.photo.key, class: "avatar m-3" if loser %>
+          <% else %>
+            <% loser = match.user %>
+            <%= cl_image_tag loser.photo.key, class: "avatar m-3" if loser %>
+          <% end %>
         </div>
-        <% end %>
-
+        <div class="m-2">
+          <%= match.winner %>
+        </div>
+        <div class="m-2">
+          <%= match.winner_score %>
+        </div>
+        <div class="m-2">
+          <%= match.loser_score %>
+        </div>
+        <div>
+          <% if match.winner == match.user.nickname %>
+            <% loser_request = Request.where(match: match).first %>
+            <% loser_nickname = loser_request.user.nickname if loser_request %>
+            <%= loser_nickname %>
+          <% else %>
+            <%= loser = match.user.nickname %>
+          <% end %>
+        </div>
+        <div>
+          <% if match.winner == match.user.nickname %>
+            <% loser_request = Request.where(match: match).first %>
+            <% loser = loser_request.user if loser_request %>
+            <%= cl_image_tag loser.photo.key, class: "avatar m-3" if loser %>
+          <% else %>
+            <% loser = match.user %>
+            <%= cl_image_tag loser.photo.key, class: "avatar m-3" if loser %>
+          <% end %>
+        </div>
+        <div>
+          <% if match.winner == current_user.nickname %>
+            <p>Victoire</p>
+          <% else %>
+            <p>Défaite</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
 
       </div>
     </div>
   </div>
-
-
-
-
 </div>

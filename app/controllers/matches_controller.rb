@@ -54,6 +54,7 @@ class MatchesController < ApplicationController
     @match.winner = params[:match][:winner]
     @match.update(match_params)
     @user = User.where(nickname: params[:match][:winner]).first
+    raise
     if @user.name == @match.user.name
       @points_change = 50
       @match.user.points += @points_change
