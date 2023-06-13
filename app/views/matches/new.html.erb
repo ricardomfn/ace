@@ -6,7 +6,7 @@
 <%= simple_form_for(@match) do |f| %>
 
   <%= f.input :address,
-    label: "Adresse du Match",
+    label:false, placeholder: "Adresse du match",
     input_html: { class: "create-input"},
     wrapper_html: {data: {controller: "address-autocomplete",
     input_html: {data: {address_autocomplete_target: "address", class: "d-none"}},
@@ -16,32 +16,34 @@
   <%= f.input :date,
     as: :string,
     input_html: { data: { controller: "datepicker" } },
-    label: "Date & heure",
+    label:false, placeholder: "Date/Heure",
     input_html: { class: "create-input"}
   %>
 
   <%= f.input :match_type,
     collection: Match::TYPES,
-    label: "Type de Match",
+    label:false, prompt: "Type de match",
     input_html: { class: "create-input"}
   %>
   <%= f.input :modality,
     collection: Match::MODALITIES,
-    label: "Modalité du match",
-    input_html: { class: "create-input"}
+    label:false, prompt: "simple/double",
+    input_html: { class: "create-input "}
   %>
+
   <%= f.input :price,
-    label: "Prix",
+    label:false, placeholder: "prix",
     input_html: { class: "create-input"}
   %>
 
   <%= f.input :level,
     collection: [['Jamais joué', 0],['Débutant', 200],['Intermediaire', 400],['Confirmé', 600],['Expert', 800],['Elite',1000]],
-    label: "Niveau de jeu",
+    label:false, prompt: "Niveau",
     input_html: { class: "create-input"}
   %>
 
   <%= f.submit "Créer un match", class: "btn-ace mb-5" %>
 <% end %>
 </div>
+
 </div>

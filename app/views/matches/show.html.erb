@@ -1,58 +1,61 @@
 <%= render 'shared/navbar_general' %>
+
 <div style="width: 100%; height: 150px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-<div class="show-infos">
-  <div class="hexag">
-    <% if @match.match_type == "défi"  %>
-      <div>
-      <i class="fa-solid fa-trophy" style="color: #000000; font-size: 40px;" ></i>
-      <%# <p><%= @match.match_type %>
-      </div>
-    <%else %>
-      <i class="fa-solid fa-face-smile" style="color: #000000; font-size: 40px;"></i>
-      <%# <p><%= @match.match_type %></p>
-    <%end %>
-  </div>
-</div>
+<div style="background-color: white; height: 66vh">
+  <div class="show-infos">
+    <div class="hexag">
+      <% if @match.match_type == "défi" %>
+        <div>
+          <i class="fa-solid fa-trophy" style="color: #253343; font-size: 40px;"></i>
 
-  <div class="banner">
-  <h4><%= @match.address %></h4>
-  <p><%= @match.date.strftime('%A %e %B')%></p>
-  </div>
+        </div>
+      <% else %>
+        <i class="fa-solid fa-face-smile" style="color: #253343; font-size: 40px;"></i>
 
-  <div class="match-infos">
-
-<div class="container">
-    <div class="user-infos">
-    <div>
-      <p><strong>Price: </strong><%= @match.price%> €</p>
-      <p><strong>Level: </strong><%= @match.level%> points</p>
-      <p><strong>Type: </strong><%= @match.match_type%></p>
-      <p><strong>Modalité: </strong><%= @match.modality%></p>
-    </div>
-      <div style="text-align: center;">
-        <%= cl_image_tag @match.user.photo.key, class: "avatar"%>
-        <p><strong><%= @match.user.nickname%></strong></p>
-
-
-        <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
-          <i class="fa-regular fa-comment" style="font-size: 18px"></i>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-    <div>
-    </div>
-
-
-
-
-    <div data-controller="popup">
-      <%= simple_form_for [@match, @request] do |f| %>
-        <%= f.submit "Jouer!", class: "btn-ace", "data-action": "click->popup#handleClick" %>
       <% end %>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="banner">
+    <p class="size-adress">
+    <%= @match.address %>
+    </p>
+    <p><%= @match.date.strftime("%d/%m/%Y %H") %> h</p>
+    </div>
+
+    <div class="card">
+
+        <div class="user-infos">
+          <div>
+            <p><strong>Adversaire: </strong><%= @match.user.nickname%>  (Lvl : <%= @match.user.points%> pts) </p>
+            <p><strong>Prix: </strong><%= @match.price %> €</p>
+            <p><strong>Niveau recherché: </strong><%= @match.level %> points</p>
+            <p><strong>Modalité: </strong><%= @match.modality %></p>
+          </div>
+          <div style="text-align: center;">
+            <%= cl_image_tag @match.user.photo.key, class: "avatar avatar-bordered avatar-match" %>
+
+            <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
+              <i class="fas fa-message position-chat" style="color: #253343; font-size: 30px; padding: 8px;"></i>
+            <% end %>
+          </div>
+        </div>
+
+
+      <div>
+      </div>
+
+      <div data-controller="popup" class="text-center">
+        <%= simple_form_for [@match, @request] do |f| %>
+          <%= f.submit "Jouer!", class: "btn-ace btn", "data-action": "click->popup#handleClick", style: "margin-top: 20px" %>
+        <% end %>
+      </div>
+
+
+  </div>
+</div>
