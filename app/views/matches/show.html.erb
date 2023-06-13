@@ -36,7 +36,11 @@
       <div style="text-align: center;">
         <%= cl_image_tag @match.user.photo.key, class: "avatar"%>
         <p><strong><%= @match.user.nickname%></strong></p>
-        <i class="fa-regular fa-comment" style="font-size: 18px"></i>
+
+
+        <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
+          <i class="fa-regular fa-comment" style="font-size: 18px"></i>
+        <% end %>
       </div>
     </div>
   </div>
