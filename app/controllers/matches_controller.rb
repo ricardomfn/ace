@@ -6,13 +6,21 @@ class MatchesController < ApplicationController
     if params[:date].present?
       @matches = @matches.where(date: params[:date])
     end
+
+    @markers = @matches.geocoded.map do |match|
+      {
+        lat: match.latitude,
+        lng: match.longitude
+      }
+    end
   end
 
   def show
     @match = Match.find(params[:id])
     @request = Request.new
+
     if @match.geocoded?
-      @marker = [
+      @markers = [
         {
           lat: @match.latitude,
           lng: @match.longitude
@@ -47,21 +55,30 @@ class MatchesController < ApplicationController
     @match.update(match_params)
     @user = User.where(nickname: params[:match][:winner]).first
     if @user.name == @match.user.name
-      @match.user.points += 50
-      @request.user.points -= 50
+      @points_change = 50
+      @match.user.points += @points_change
+      @request.user.points -= @points_change
     else
-      @request.user.points += 50
-      @match.user.points -= 50
+      @points_change = -50
+      @match.user.points += @points_change
+      @request.user.points -= @points_change
     end
     @match.user.points = [0, @match.user.points].max
     @request.user.points = [0, @request.user.points].max
     @match.user.save
     @request.user.save
-    redirect_to profile_path
+    redirect_to profile_path(points_change: @points_change)
+  end
+
+  def match_score
+    @match = Match.find(params[:id])
+    @request = Request.where(match: @match).first
+    @match.winner = params[:match][:winner]
+    @match.update(match_params)
   end
 
   private
   def match_params
-    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type, :winner)
+    params.require(:match).permit(:address, :modality, :price, :level, :date, :match_type, :winner, :winner_score, :loser_score)
   end
 end

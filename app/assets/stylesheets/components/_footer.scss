@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 10vh;
-  background: #ac552c;
+  background: #EAF959;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 10vh;
-  background: #ac552c;
+  background: #EAF959;
   display: flex;
   align-items: bottom;
   justify-content: space-between;
@@ -36,13 +36,13 @@
 }
 
 .logo-footer a {
-  color: rgb(246, 243, 243);
+  color: #253343;
   text-decoration: none;
   font-size: 21px;
 }
 
 .logo-footer p {
-  color: rgb(246, 243, 243);
+  color: #253343;
   text-decoration: none;
   font-size: 11px;
 }
@@ -62,4 +62,12 @@
 /* Additional CSS to enable scrolling */
 body {
   margin-bottom: 10vh; /* Add bottom margin equal to the footer's height */
+}
+
+.logo-match {
+  margin-bottom: 40px;
+  background-color: #EAF959;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
 }

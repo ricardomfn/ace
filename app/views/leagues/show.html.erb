@@ -1,12 +1,12 @@
 <%= render 'shared/navbar_general' %>
  <div class="league-container">
   <h1><%= @league.name %></h1> <br>
-  <p>created by : <%= @league.user.first_name %>
+  <p>créé par : <%= @league.user.first_name %>
   <%= link_to profile_path do %>
   <%= cl_image_tag current_user.photo.key, class: "avatar-bordered"%> </p>
   <% end %>
   <% if @league.user == current_user %>
-  <button>
+  <button class="button-17">
     <%= link_to "Ajouter un membre", new_league_membership_path(@league) %>
   </button>
   <%end %>
@@ -18,30 +18,32 @@
       <th>Classement</th>
       <th>nom</th>
       <th>points</th>
-      <th>action</th>
+      <th></th>
     </tr>
   </thead>
    <tbody>
-    <% @league.memberships.sort_by { |membership| membership.user.points }.each_with_index do |membership, index| %>
+    <% @league.memberships.sort_by { |membership| -membership.user.points }.each_with_index do |membership, index| %>
       <tr>
         <td>
           <% if index == 0 %>
-            <i class="fa-solid fa-medal" style="color: #ffd91a;"></i>
+            <i class="fa-solid fa-trophy" style="color: #ffd91a;"></i>
           <% elsif index == 1 %>
-            <i class="fa-solid fa-medal" style="color: #929290;"></i>
+            <i class="fa-solid fa-trophy" style="color: #929290;"></i>
           <% elsif index == 2 %>
-            <i class="fa-solid fa-medal" style="color: #a06b22;"></i>
+            <i class="fa-solid fa-trophy" style="color: #a06b22;"></i>
           <% else %>
-            <%= index + 1 %>
+            <p><%= index + 1 %> e</p>
           <% end %>
         </td>
         <td><%= membership.user.nickname %></td>
         <td><%= membership.user.points %></td>
-        <td>
-          <% if @league.user == current_user %>
-            <%= link_to "x", membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
-          <%end %>
-        </td>
+        <% if @league.user == current_user %>
+          <td>
+          <%= link_to membership_path(membership), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" do %>
+            <i class="fa-regular fa-trash-can" style="color: #000000;"></i>
+          <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

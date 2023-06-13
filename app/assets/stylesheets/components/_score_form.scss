@@ -1,3 +1,80 @@
+.fade-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.fade-wrapper h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+  pointer-events: none;
+}
+
+.fade-wrapper.fade-out h4 {
+  opacity: 0;
+}
+
+
+.fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.won {
+  color: green;
+}
+
+.lost {
+  color: red;
+}
+
+
+.score-selector {
+  width: 100px;
+}
+
+.score-fields {
+  margin-top: 10px;
+}
+
+.score-field {
+  margin-right: 10px;
+}
+
+
+.custom-text-size {
+  font-size: 45px;
+}
+.collection-text-center {
+  text-align: center;
+}
+
 .category-wrapper {
   display: flex;
   justify-content: space-around;
@@ -18,34 +95,36 @@
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  font-size: 12px;
+  font-size: 18px;
   text-align: left;
-  padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
+  padding: 10px 10px 15px 10px;
+  border: 1px solid #253343;
   border-radius: 4px;
-  background-color: white;
+  background-color: #F5F5F5;
+  color: #253343;
 }
 
 .category-selector:checked + label {
+  color: #EBF95E;
 }
 
 
 #match_winner_ricky + label {
-  color: #ac552c;
+
 }
 
 #match_winner_ricky:checked + label {
-  border-color: #ac552c;
-  border: 2px solid brown;
+  border: 2px solid #253343;
+  background-color: #253343;
 
 }
 
 #match_winner_jo + label {
-  color: #ac552c;
+
 }
 
 #match_winner_jo:checked + label {
-  border-color: #ac552c;
-  border: 2px solid brown;
+  border-color: #253343;
+  background-color: #253343;
 
 }

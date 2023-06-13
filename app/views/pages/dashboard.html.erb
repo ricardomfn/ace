@@ -17,21 +17,25 @@
       <!-- Contenu de la colonne des messages -->
 
       <% @requests.each do |request| %>
-      <% if request.status == "accepted" && request.match.match_type == "Défi" %>
-      <div class="card-vinted" data-controller="toggle" class="collapsed">
-          <div data-action="click->toggle#toggle">
-          <h2 style="color: red"> Rentrez le score du défi avec <%= request.match.user.nickname %></h2>
+        <% if request.status == "accepted" && request.match.match_type == "Défi" %>
+          <% first_print_date = request.created_at %>
+          <div class="card-vinted" data-controller="toggle" class="collapsed">
+              <div data-action="click->toggle#toggle">
+              <p style='color=black'>Le <%= l(first_print_date, locale: :fr) %></p>
+              <h2 style="color: red"> Rentrez le score du défi avec <%= request.user.nickname %></h2>
+              </div>
+              <div data-toggle-target="content">
+                <button class="btn-ace"><%= link_to "Rentrer le score", edit_match_path(request.match), class: "" %></button>
+              </div>
           </div>
-          <div data-toggle-target="content">
-            <button class="btn-ace mt-5"><%= link_to "Rentrer le score", edit_match_path(request.match) %></button>
-          </div>
-      </div>
-      <% end %>
+        <% end %>
       <% end %>
 
       <% @my_requests.each do |request| %>
+        <% first_print_date = request.created_at %>
         <div class="card-vinted" data-controller="toggle" class="collapsed">
           <div data-action="click->toggle#toggle">
+            <p style='color=black'>Le <%= l(first_print_date, locale: :fr) %></p>
             <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
             <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
             <% if request.status == "refused" %>
@@ -54,8 +58,10 @@
       <% end %>
 
       <% @requests.each do |request| %>
+        <% first_print_date = request.created_at %>
         <div class="card-vinted" data-controller="toggle" class="collapsed">
           <div data-action="click->toggle#toggle">
+            <p style='color=black'>Le <%= l(first_print_date, locale: :fr) %></p>
             <h2> <%= request.user.nickname %> veut jouer avec vous! </h2>
             <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
             <% if request.status == "refused" %>

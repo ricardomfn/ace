@@ -14,3 +14,8 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+@font-face {
+  font-family: "CherryBomb-Regular";
+  src: font-url('CherryBomb-Regular.ttf') format('truetype');
+}
+$my-font: "CherryBomb-Regular";
