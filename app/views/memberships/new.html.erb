@@ -1,8 +1,9 @@
 <%= render 'shared/navbar_general' %>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8">
-      <h1><%= @league.name %></h1>
+    <div class="col-12 col-md-8 " style="color: #253343; font-family: Cherry Bomb; ">
+      <h1 class="text-center ligue-name-crea" style="margin-top: 20px; font-family: 'Cherry Bomb';"><%= @league.name %></h1>
+
     <br>
     <%= form_with url: new_league_membership_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -10,12 +11,13 @@
         class: "form-control me-3 ms-2",
         placeholder: "recherche un joueur"
       %>
-      <%= submit_tag "Ace !" %>
+      <%= submit_tag "Ace !", class: "btn-ace" %>
+
     <% end %>
     <br>
       <%= simple_form_for [@league, @membership] do |f| %>
-        <%= f.input :user, collection: @user_collection, input_html: {multiple: true, class: "multiple-select"}, include_hidden: false %>
-        <%= f.submit "Add member", class: 'btn btn-primary' %>
+        <%= f.input :user, collection: @user_collection, input_html: {multiple: true, class: "multiple-select"}, include_hidden: false, label:false %>
+        <%= f.submit "Ajouter", class: 'btn-ace mt-4' %>
       <% end %>
     </div>
   </div>

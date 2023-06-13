@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .ligue-item {
@@ -31,17 +32,44 @@
   width: 100%;
   font-size: 12px;
   text-align: left;
-  padding: 10px 10px 30px 10px;
 
 }
 
 .ligue-selector:checked + label {
-  border: solid 1px red;
+  border: solid 1px #253343;
+  border-radius: 50% !important;
+  width:fit-content;
+
 }
+
+
 
 .form-check-label img{
   display:flex;
-  width:50px;
-  height:50px;
+  width:80px;
+  height:80px;
   border-radius:50%
+}
+
+.col-form-label {
+  display: none;
+}
+
+
+
+.centered-input {
+  margin: 0 auto;
+  display: block;
+  width : 50vh;
+}
+
+
+.form-control {
+  border-radius: 10px !important;
+}
+
+
+
+.ligue-name-crea{
+  font-size: 30px !important;
 }

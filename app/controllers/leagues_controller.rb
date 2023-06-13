@@ -25,7 +25,7 @@ class LeaguesController < ApplicationController
     @league.user = current_user
 
     if @league.save
-      redirect_to league_path(@league), notice: "League was successfully created."
+      redirect_to new_league_membership_path(@league), notice: "League was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

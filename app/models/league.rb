@@ -6,6 +6,6 @@ class League < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :image, presence: true
 
-  CATEGORIES = ["icon1.jpg", "icon2.jpg", "icon6.jpg", "icon4.jpg", "icon7.jpg"]
+  CATEGORIES = ["icon1.png", "icon2.png", "icon3.png", "icon4.png", "icon5.png", "icon6.png"]
 
 end
