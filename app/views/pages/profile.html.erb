@@ -6,7 +6,7 @@
       <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
       <h3 style="font-size: 24px; font-weight: bold;"><%= current_user.nickname %></h3>
       <div class="fade-wrapper mt-3 mb-4">
-        <h4 class="fade-out" style="font-size: 22px; font-weight: bold;"><%= current_user.points - params[:points_change].to_i %>pts</h4>
+        <h4 class="fade-out" style="font-size: 22px; font-weight: bold;"><%= current_user.points - params[:points_change].to_i if current_user.points %>pts</h4>
         <h4 class="fade-in" style="font-size: 22px; font-weight: bold;"><%= current_user.points %>pts</h4>
       </div>
       <% if params[:points_change] %>
