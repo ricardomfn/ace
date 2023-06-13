@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.image-fond {
+  background-image: url("Rectangle 20.png");
+  background-repeat: no-repeat;
+  // background-size: contain;
+  background-position-y: 50px;
+  background-color: white;
+}
+
 .league-container a {
   color: black;
   text-decoration: none;
@@ -38,4 +46,88 @@
 
 .membership-points {
   color: #888;
+}
+
+.podium {
+  display: flex;
+  justify-content: space-around;
+  align-items:end;
+
+}
+
+.podium h2 {
+  font-size: 40px;
+  color: white;
+  font-family: CherryBomb-Regular;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+
+.num-1 {
+  background-color: #253343;
+  width: 71px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 158px;
+}
+.num-2 {
+  background-color: #253343;
+  width: 71px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 98px;
+}
+.num-3 {
+  background-color: #253343;
+  width: 71px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 98px;
+}
+
+.classement {
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.ranking-cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ranking-card {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 80%;
+  height: 70px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.rank-index {
+  font-size: 40px;
+  color: #EBF95E;
+  font-family: CherryBomb-Regular;
+  font-style: normal;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poubelle {
+  position: absolute;
+  top: 30px;
+  right: 7px;
+
+}
+
+.chat-infos {
+  text-align: left;
+  padding-top: 6px;
 }
