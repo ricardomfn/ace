@@ -16,7 +16,7 @@ Chatroom.destroy_all
 UserChatroom.destroy_all
 User.destroy_all
 Membership.destroy_all
-Chatroom.destroy_all
+
 
 user1 = User.new({
   email: "ricardo@gmail.com",
