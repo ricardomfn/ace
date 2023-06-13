@@ -1,12 +1,25 @@
-  <div class="navbar">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
     <div class="back-arrow">
       <%= link_to "javascript:history.back()" do %>
-      <i class="fa-solid fa-arrow-left fa-2xl" style="color: #253343;"></i>
+        <i class="fa-solid fa-arrow-left fa-2xl" style="color: #253343;"></i>
       <% end %>
     </div>
-    <div class="logo">
-      <%= link_to matches_path do %>
-      <img src="https://res.cloudinary.com/diuabdrmm/image/upload/v1686218660/ace_vlx2py.png" alt="Logo" width="50" height="50">
-      <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/diuabdrmm/image/upload/v1686218660/ace_vlx2py.png" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to  %>
+            </div>
+          </li>
+          <!--li class="nav-item"-->
+          <!--/li-->
+      </ul>
     </div>
   </div>
+</div>
