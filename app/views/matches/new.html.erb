@@ -1,12 +1,13 @@
 <%= render 'shared/navbar_general' %>
 
 <div class="container">
-<h1>Create a new Match</h1>
+<h1 class="title mb-4">Nouveau Match</h1>
 
 <%= simple_form_for(@match) do |f| %>
 
   <%= f.input :address,
     label: "Adresse du Match",
+    input_html: { class: "create-input"},
     wrapper_html: {data: {controller: "address-autocomplete",
     input_html: {data: {address_autocomplete_target: "address", class: "d-none"}},
     address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
@@ -15,27 +16,32 @@
   <%= f.input :date,
     as: :string,
     input_html: { data: { controller: "datepicker" } },
-    label: "Date & heure"
+    label: "Date & heure",
+    input_html: { class: "create-input"}
   %>
 
   <%= f.input :match_type,
     collection: Match::TYPES,
-    label: "Type de Match"
+    label: "Type de Match",
+    input_html: { class: "create-input"}
   %>
   <%= f.input :modality,
     collection: Match::MODALITIES,
-    label: "Modalité du match"
+    label: "Modalité du match",
+    input_html: { class: "create-input"}
   %>
   <%= f.input :price,
-    label: "Prix"
+    label: "Prix",
+    input_html: { class: "create-input"}
   %>
 
   <%= f.input :level,
     collection: [['Jamais joué', 0],['Débutant', 200],['Intermediaire', 400],['Confirmé', 600],['Expert', 800],['Elite',1000]],
-    label: "Niveau de jeu"
+    label: "Niveau de jeu",
+    input_html: { class: "create-input"}
   %>
 
-  <%= f.submit%>
+  <%= f.submit "Créer un match", class: "btn-ace mb-5" %>
 <% end %>
 </div>
 </div>
