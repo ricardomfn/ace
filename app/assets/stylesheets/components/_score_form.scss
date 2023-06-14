@@ -106,25 +106,12 @@
 
 .category-selector:checked + label {
   color: #EBF95E;
-}
-
-
-#match_winner_ricky + label {
-
-}
-
-#match_winner_ricky:checked + label {
   border: 2px solid #253343;
   background-color: #253343;
-
 }
 
-#match_winner_jo + label {
 
-}
-
-#match_winner_jo:checked + label {
-  border-color: #253343;
+#match_winner:checked {
+  border: 2px solid #253343;
   background-color: #253343;
-
 }
