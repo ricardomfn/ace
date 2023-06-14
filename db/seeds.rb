@@ -12,8 +12,8 @@ League.destroy_all
 Request.destroy_all
 Match.destroy_all
 Message.destroy_all
-Chatroom.destroy_all
 UserChatroom.destroy_all
+Chatroom.destroy_all
 User.destroy_all
 Membership.destroy_all
 
@@ -62,7 +62,7 @@ user4 = User.new({
   password: "123456",
   first_name: "Mathieu",
   last_name: "Jelsch",
-  nickname: "Le M",
+  nickname: "Mat",
   birth_date: "05/08/1992",
   points: rand(200..700)
   })
@@ -98,7 +98,7 @@ user6 = User.new({
 
 user7 = User.new({
   email: "rafa@gmail.com",
-  password: "123656",
+  password: "123456",
   first_name: "Rafael",
   last_name: "N",
   nickname: "Rafa",
@@ -110,7 +110,7 @@ user7 = User.new({
   user7.save!
 
 user8 = User.new({
-  email: "doko@gmail.com",
+  email: "djoko@gmail.com",
   password: "123456",
   first_name: "Novak",
   last_name: "K",
@@ -123,11 +123,11 @@ user8 = User.new({
   user8.save!
 
 user9 = User.new({
-  email: "pete@gmail.com",
+  email: "Yannick@gmail.com",
   password: "123456",
-  first_name: "Pete",
-  last_name: "S",
-  nickname: "Sampras",
+  first_name: "Yannick",
+  last_name: "N",
+  nickname: "Noah",
   birth_date: "05/08/1992",
   points: rand(200..700)
   })
@@ -136,11 +136,11 @@ user9 = User.new({
   user9.save!
 
 user10 = User.new({
-  email: "andre@gmail.com",
+  email: "gael@gmail.com",
   password: "123456",
-  first_name: "Andre",
-  last_name: "Agassi",
-  nickname: "Agassi",
+  first_name: "Gael",
+  last_name: "Monfis",
+  nickname: "Monfis",
   birth_date: "05/08/1992",
   points: rand(200..700)
   })
