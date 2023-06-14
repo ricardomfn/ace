@@ -4,7 +4,6 @@ class MembershipsController < ApplicationController
     @league = League.find(params[:league_id])
     @users = User.all
     @membership = Membership.new
-
     if params[:query].present?
       sql_query = "users.nickname ILIKE :query"
       @user_collection = User.where(sql_query, query: "%#{params[:query]}%")
@@ -17,8 +16,9 @@ class MembershipsController < ApplicationController
 
 
   def create
+
     if params[:membership].present?
-      @users = params[:membership][:user]
+      @users = params[:membership][:user] << current_user[:id].to_s
       @league = params[:league_id]
 
       @users.each do |user|
