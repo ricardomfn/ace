@@ -126,7 +126,6 @@
               <div>
                 <%= cl_image_tag other_chatroom_user(chatroom).photo.key, class: "avatar m-3"%>
               </div>
-
               <div class="chat-infos">
                 <p style="font-size: 16px"><strong><%= other_chatroom_user(chatroom).nickname %></strong></p>
                 <%= chatroom.messages.last.content%>

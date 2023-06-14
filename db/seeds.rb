@@ -77,7 +77,7 @@ user5 = User.new({
   last_name: "k",
   nickname: "Guga",
   birth_date: "05/08/1992",
-  points: rand(200..700)
+  points: 567
   })
   avatar5 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686689245/AVT_Gustavo-Kuerten_6590_lyxwbu.webp")
   user5.photo.attach(io: avatar5, filename:"Mon avatar5")
@@ -88,9 +88,9 @@ user6 = User.new({
   password: "123456",
   first_name: "Roger",
   last_name: "F",
-  nickname: "Rog",
+  nickname: "Roger",
   birth_date: "05/08/1992",
-  points: rand(200..700)
+  points: 591
   })
   avatar6 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686689244/rsvaohjon8dsruqoz9tf_tluqjn.webp")
   user6.photo.attach(io: avatar6, filename:"Mon avatar6")
@@ -103,7 +103,7 @@ user7 = User.new({
   last_name: "N",
   nickname: "Rafa",
   birth_date: "05/08/1992",
-  points: rand(200..700)
+  points: 645
   })
   avatar7 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686689244/7143728-rafael-nadal-fait-tomber-le-tenant-du-ti-300x300-2_y9gbgr.jpg")
   user7.photo.attach(io: avatar7, filename:"Mon avatar7")
@@ -116,7 +116,7 @@ user8 = User.new({
   last_name: "K",
   nickname: "Djoko",
   birth_date: "05/08/1992",
-  points: rand(200..700)
+  points: 720
   })
   avatar8 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686689244/1413_qsplps.jpg")
   user8.photo.attach(io: avatar8, filename:"Mon avatar8")
@@ -279,9 +279,9 @@ request1.save!
 request2 = Request.new(status: 0, match_id: match2.id, user_id: user1.id)
 request2.save!
 
-league1 = League.new(name: "Monde", user_id: user2.id)
-league1.image = "icon2.png"
-league1.save!
+# league1 = League.new(name: "Monde", user_id: user2.id)
+# league1.image = "icon2.png"
+# league1.save!
 
 
 league2 = League.new(name: "Paris", user_id: user1.id)
