@@ -25,11 +25,11 @@
 
   <div class="show-match">
     <div class="user-infos">
-            <div >
+            <div>
               <p ><%= @match.user.nickname %><em> (Lvl : <%= @match.user.points%> pts) </p></em>
               <p> <%= @match.price %> €</p>
               <p>Match <%= @match.modality %></p>
-              <p>Niveau recherché : <%= @match.level %> points</p>
+              <p>Niveau recherché : <span style="color:red"><%= @match.level %> points </span></p>
             </div>
     </div>
 

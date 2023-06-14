@@ -17,14 +17,16 @@ class MembershipsController < ApplicationController
 
 
   def create
-    @users = params[:membership][:user]
-    @league = params[:league_id]
+    if params[:membership].present?
+      @users = params[:membership][:user]
+      @league = params[:league_id]
 
-    @users.each do |user|
-      membership = Membership.new(user_id: user, league_id: @league)
-      membership.save
+      @users.each do |user|
+        membership = Membership.new(user_id: user, league_id: @league)
+        membership.save
+      end
+      redirect_to league_path(@league)
     end
-    redirect_to league_path(@league)
   end
 
   def destroy
