@@ -289,8 +289,8 @@ league2.image = "icon3.png"
 league2.save!
 
 
-membership1 = Membership.new(user_id: user1.id, league_id: league1.id)
-membership1.save!
+# membership1 = Membership.new(user_id: user1.id, league_id: league1.id)
+# membership1.save!
 
 
 membership2 = Membership.new(user_id: user2.id, league_id: league2.id)
