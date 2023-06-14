@@ -15,9 +15,8 @@
 
   <%= f.input :date,
     as: :string,
-    input_html: { data: { controller: "datepicker" } },
-    label:false, placeholder: "Date/Heure",
-    input_html: { class: "create-input"}
+    input_html: { data: { controller: "datepicker" }, class: "create-input" },
+    label:false, placeholder: "Date/Heure"
   %>
 
   <%= f.input :match_type,
