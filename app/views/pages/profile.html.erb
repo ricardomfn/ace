@@ -1,19 +1,21 @@
-<%= render 'shared/navbar_general' %>
 
-<div class="container-global">
-  <div class="container text-center"> <!-- Added 'text-center' class -->
-    <div class="profile" style="margin-bottom: 20px; margin-top: 20px" data-controller="fade-out">
-      <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
-      <h3 style="font-size: 24px; font-weight: bold;"><%= current_user.nickname %></h3>
-      <div class="fade-wrapper mt-3 mb-4">
-        <h4 class="fade-out" style="font-size: 22px; font-weight: bold;"><%= current_user.points - params[:points_change].to_i if current_user.points %>pts</h4>
-        <h4 class="fade-in" style="font-size: 22px; font-weight: bold;"><%= current_user.points %>pts</h4>
+<%= render 'shared/navbar_general' %>
+ <div class="league-container image-fond">
+  <div>
+    <div class="container text-center"> <!-- Added 'text-center' class -->
+      <div class="profile" style="margin-bottom: 20px; margin-top: 20px" data-controller="fade-out">
+        <%= cl_image_tag current_user.photo.key, class: "profile-avatar avatar-bordered img-fluid rounded-circle"%>
+        <h1 class="title"><%= current_user.nickname %></h1>
+        <div class="fade-wrapper mt-3 mb-4">
+          <h4 class="fade-out" style="font-size: 22px; font-weight: bold;"><%= current_user.points - params[:points_change].to_i if current_user.points %>pts</h4>
+          <h4 class="fade-in" style="font-size: 22px; font-weight: bold;"><%= current_user.points %>pts</h4>
+        </div>
+        <% if params[:points_change] %>
+          <% points_change = params[:points_change].to_i %>
+          <span data-fade-out-target="change" style="font-size: 22px;" class="fade-in <%= points_change.positive? ? 'won' : 'lost' %>"><%=  '+' if points_change.positive?%><%= points_change %> pts </span>
+        <% end %>
       </div>
-      <% if params[:points_change] %>
-        <% points_change = params[:points_change].to_i %>
-        <span data-fade-out-target="change" style="font-size: 22px;" class="fade-in <%= points_change.positive? ? 'won' : 'lost' %>"><%=  '+' if points_change.positive?%><%= points_change %> pts </span>
-      <% end %>
-    </div>
+  </div>
 
 
     <div class="container">
@@ -24,14 +26,14 @@
       <!-- Add a league button -->
       <%# <button class="btn btn-secondary" style="background-color: white; color: white;">
         <%= link_to "Rechercher une ligue", leagues_path %>
-
       <div class="custom-container">
         <ul class="nav nav-pills mb-3 mt-3 nav-fill" id="" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link custom-button" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Mes ligues</button>
+            <button class="menu-bar" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Mes ligues</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link custom-button" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Historique</button>
+            <button class="menu-bar" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Historique</button>
+            <%# <button class="nav-link custom-button menu-bar" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Historique</button> %>
           </li>
         </ul>
       </div>
