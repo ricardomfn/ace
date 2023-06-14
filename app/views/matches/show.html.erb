@@ -28,14 +28,14 @@
     <p><%= @match.date.strftime("%d/%m/%Y %H") %> h</p>
     </div>
 
-    <div class="card">
+    <div class="card-match">
 
         <div class="user-infos">
           <div>
-            <p><strong>Adversaire: </strong><%= @match.user.nickname%>  (Lvl : <%= @match.user.points%> pts) </p>
-            <p><strong>Prix: </strong><%= @match.price %> €</p>
-            <p><strong>Niveau recherché: </strong><%= @match.level %> points</p>
-            <p><strong>Modalité: </strong><%= @match.modality %></p>
+            <p><strong>Adversaire: </strong> <%= @match.user.nickname%>  (Lvl : <%= @match.user.points%> pts) </p>
+            <p><strong>Prix: </strong> <%= @match.price %> €</p>
+            <p><strong>Niveau recherché: </strong> <%= @match.level %> points</p>
+            <p><strong>Modalité: </strong> <%= @match.modality %></p>
           </div>
           <div style="text-align: center;">
             <%= cl_image_tag @match.user.photo.key, class: "avatar avatar-bordered avatar-match" %>
@@ -45,10 +45,6 @@
             <% end %>
           </div>
         </div>
-
-
-      <div>
-      </div>
 
       <div data-controller="popup" class="text-center">
         <%= simple_form_for [@match, @request] do |f| %>
