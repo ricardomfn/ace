@@ -1,12 +1,12 @@
 .navbar {
 
-  background-color: transparent;
   overflow: visible;
-  height: 50px;
+  height: 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px; /* Ajout d'un espace entre les éléments */
+  margin-bottom: 10px;
 }
 
 /* Style pour la flèche de retour */
@@ -14,4 +14,20 @@
   // padding: 15px;
   color: white;
   padding: 15px;
+}
+
+.btn-log {
+  border: none;
+}
+
+.collapsed {
+  max-height: 30px;
+}
+
+.dropdown-item a {
+  font-size: 40px;
+}
+
+body {
+  background-color: white;
 }
