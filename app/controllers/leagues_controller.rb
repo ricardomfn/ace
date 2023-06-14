@@ -24,7 +24,7 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     @league.user = current_user
-
+  
     if @league.save
       redirect_to new_league_membership_path(@league), notice: "League was successfully created."
     else
