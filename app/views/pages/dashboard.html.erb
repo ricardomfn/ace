@@ -19,23 +19,41 @@
       <% @requests.each do |request| %>
         <% if request.status == "accepted" && request.match.match_type == "Défi" %>
           <% first_print_date = request.created_at %>
+          <% current_date = Time.now %>
+          <% difference_hours= ((current_date - first_print_date) / 3600).round %>
+          <% difference_days= ((current_date - first_print_date) / 96400).round %>
           <div class="card-vinted" data-controller="toggle" class="collapsed">
-              <div data-action="click->toggle#toggle">
-              <p style='color=black'>Le <%= l(first_print_date, locale: :fr) %></p>
-              <h2 style="color: red"> Rentrez le score du défi avec <%= request.user.nickname %></h2>
-              </div>
-              <div data-toggle-target="content">
-                <button class="btn-ace"><%= link_to "Rentrer le score", edit_match_path(request.match), class: "" %></button>
-              </div>
+            <div data-action="click->toggle#toggle">
+            <% if difference_hours < 24%>
+              <p style='color: gray'>il y a <%= difference_hours %> heures</p>
+            <% elsif difference_days = 1 %>
+              <p style='color: gray'>il y a <%= difference_days %> jour</p>
+            <% else %>
+              <p style='color: gray'>il y a <%= difference_days %> jours</p>
+            <% end %>
+            <h2 style="color: red"> Rentrez le score du défi avec <%= request.user.nickname %></h2>
+            </div>
+            <div data-toggle-target="content">
+              <button class="btn-ace"><%= link_to "Rentrer le score", edit_match_path(request.match), class: "" %></button>
+            </div>
           </div>
         <% end %>
       <% end %>
 
       <% @my_requests.each do |request| %>
         <% first_print_date = request.created_at %>
+        <% current_date = Time.now %>
+        <% difference_hours= ((current_date - first_print_date) / 3600).round %>
+        <% difference_days= ((current_date - first_print_date) / 96400).round %>
         <div class="card-vinted" data-controller="toggle" class="collapsed">
           <div data-action="click->toggle#toggle">
-            <p style='color=black'>Le <%= l(first_print_date, locale: :fr) %></p>
+            <% if difference_hours < 24%>
+              <p style='color: gray'>il y a <%= difference_hours %> heures</p>
+            <% elsif difference_days = 1 %>
+              <p style='color: gray'>il y a <%= difference_days %> jour</p>
+            <% else %>
+              <p style='color: gray'>il y a <%= difference_days %> jours</p>
+            <% end %>
             <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
             <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
             <% if request.status == "refused" %>
@@ -59,9 +77,18 @@
 
       <% @requests.each do |request| %>
         <% first_print_date = request.created_at %>
+        <% current_date = Time.now %>
+        <% difference_hours= ((current_date - first_print_date) / 3600).round %>
+        <% difference_days= ((current_date - first_print_date) / 96400).round %>
         <div class="card-vinted" data-controller="toggle" class="collapsed">
           <div data-action="click->toggle#toggle">
-            <p style='color=black'>Le <%= l(first_print_date, locale: :fr) %></p>
+            <% if difference_hours < 24%>
+              <p style='color: gray'>il y a <%= difference_hours %> heures</p>
+            <% elsif difference_days = 1 %>
+              <p style='color: gray'>il y a <%= difference_days %> jour</p>
+            <% else %>
+              <p style='color: gray'>il y a <%= difference_days %> jours</p>
+            <% end %>
             <h2> <%= request.user.nickname %> veut jouer avec vous! </h2>
             <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%></p>
             <% if request.status == "refused" %>
