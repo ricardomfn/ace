@@ -1,8 +1,18 @@
 .menu-bar {
   background-color: #253343;
-  width: 160px;
+  width: 140px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  height: 60px;
+  height: 40px;
   color: #F5F5F5;
+}
+
+.icone-participants {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+}
+
+.carte-ligues {
+  position: relative;
 }
