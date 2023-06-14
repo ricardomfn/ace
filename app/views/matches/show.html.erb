@@ -5,49 +5,56 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-<div style="background-color: white; height: 66vh">
+
+
+<div style="background-color: #EAF959; height: 80vh">
+
+
   <div class="show-infos">
     <div class="hexag">
-      <% if @match.match_type == "défi" %>
-        <div>
-          <i class="fa-solid fa-trophy" style="color: #253343; font-size: 40px;"></i>
-
-        </div>
-      <% else %>
-        <i class="fa-solid fa-face-smile" style="color: #253343; font-size: 40px;"></i>
-
-      <% end %>
+    <%= cl_image_tag @match.user.photo.key, class: "avatar avatar-match" %>
     </div>
   </div>
 
-  <div class="container">
-    <div class="banner">
-    <p class="size-adress">
-    <%= @match.address %>
-    </p>
+  <div class="banner">
+    <p class="size-adress"><%= @match.address %></p>
     <p><%= @match.date.strftime("%d/%m/%Y %H") %> h</p>
   </div>
 
 
 
-  <div class="user-infos">
-          <div>
-            <p><%= cl_image_tag @match.user.photo.key, class: "avatar avatar-match" %> <%= @match.user.nickname%>  (Lvl : <%= @match.user.points%> pts) </p>
-            <p> <%= @match.price %> €</p>
-            <p><strong>Match </strong> <%= @match.modality %></p>
-            <p><strong>Niveau recherché: </strong> <%= @match.level %> points</p>
-          </div>
-  </div>
-
-  <div class="button-match">
-    <div data-controller="popup" >
-      <%= simple_form_for [@match, @request] do |f| %>
-        <%= f.submit "Jouer!", class: "btn-ace btn", "data-action": "click->popup#handleClick", style: "margin-top: 20px" %>
-      <% end %>
+  <div class="show-match">
+    <div class="user-infos">
+            <div >
+              <p ><%= @match.user.nickname %><em> (Lvl : <%= @match.user.points%> pts) </p></em>
+              <p> <%= @match.price %> €</p>
+              <p>Match <%= @match.modality %></p>
+              <p>Niveau recherché : <%= @match.level %> points</p>
+            </div>
     </div>
-      <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
-      <button class="btn-ace btn"></button>
+
+    <div class="button-match">
+      <div data-controller="popup" >
+        <%= simple_form_for [@match, @request] do |f| %>
+          <%= f.submit "Jouer!", class: "btn-match1", "data-action": "click->popup#handleClick", style: "margin-top: 20px" %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
+        <button class="btn-match2">Message</button>
+        <% end %>
+      </div>
+    </div>
+    <div class="defi-match">
+      <% if @match.match_type == "défi" %>
+        <div>
+          <i class="fa-solid fa-trophy" style="color: #253343; font-size: 40px;"></i>
+        </div>
+      <% else %>
+        <i class="fa-solid fa-face-smile" style="color: #253343; font-size: 40px;"></i>
       <% end %>
+
+    </div>
   </div>
 
 </div>
