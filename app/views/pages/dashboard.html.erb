@@ -128,7 +128,9 @@
               </div>
               <div class="chat-infos">
                 <p style="font-size: 16px"><strong><%= other_chatroom_user(chatroom).nickname %></strong></p>
+                <% if chatroom.messages.last.content.present? %>
                 <%= chatroom.messages.last.content%>
+                <% end %>
               </div>
 
               <div>
