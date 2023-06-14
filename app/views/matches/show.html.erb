@@ -26,32 +26,28 @@
     <%= @match.address %>
     </p>
     <p><%= @match.date.strftime("%d/%m/%Y %H") %> h</p>
-    </div>
-
-    <div class="card-match">
-
-        <div class="user-infos">
-          <div>
-            <p><strong>Adversaire: </strong> <%= @match.user.nickname%>  (Lvl : <%= @match.user.points%> pts) </p>
-            <p><strong>Prix: </strong> <%= @match.price %> €</p>
-            <p><strong>Niveau recherché: </strong> <%= @match.level %> points</p>
-            <p><strong>Modalité: </strong> <%= @match.modality %></p>
-          </div>
-          <div style="text-align: center;">
-            <%= cl_image_tag @match.user.photo.key, class: "avatar avatar-bordered avatar-match" %>
-
-            <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
-              <i class="fas fa-message position-chat" style="color: #253343; font-size: 30px; padding: 8px;"></i>
-            <% end %>
-          </div>
-        </div>
-
-      <div data-controller="popup" class="text-center">
-        <%= simple_form_for [@match, @request] do |f| %>
-          <%= f.submit "Jouer!", class: "btn-ace btn", "data-action": "click->popup#handleClick", style: "margin-top: 20px" %>
-        <% end %>
-      </div>
-
-
   </div>
+
+
+
+  <div class="user-infos">
+          <div>
+            <p><%= cl_image_tag @match.user.photo.key, class: "avatar avatar-match" %> <%= @match.user.nickname%>  (Lvl : <%= @match.user.points%> pts) </p>
+            <p> <%= @match.price %> €</p>
+            <p><strong>Match </strong> <%= @match.modality %></p>
+            <p><strong>Niveau recherché: </strong> <%= @match.level %> points</p>
+          </div>
+  </div>
+
+  <div class="button-match">
+    <div data-controller="popup" >
+      <%= simple_form_for [@match, @request] do |f| %>
+        <%= f.submit "Jouer!", class: "btn-ace btn", "data-action": "click->popup#handleClick", style: "margin-top: 20px" %>
+      <% end %>
+    </div>
+      <%= link_to chatroom_path(params: { user_id: @match.user.id }) do %>
+      <button class="btn-ace btn"></button>
+      <% end %>
+  </div>
+
 </div>
