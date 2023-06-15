@@ -131,7 +131,7 @@ user9 = User.new({
   birth_date: "05/08/1992",
   points: rand(200..700)
   })
-  avatar9 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686689244/pete-sampras-1_aaab0b.webp")
+  avatar9 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686770109/1_cswtrd.jpg")
   user9.photo.attach(io: avatar9, filename:"Mon avatar9")
   user9.save!
 
@@ -144,7 +144,7 @@ user10 = User.new({
   birth_date: "05/08/1992",
   points: rand(200..700)
   })
-  avatar10 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686689244/andre-agassi-3_gwtvjp.jpg")
+  avatar10 = URI.open("https://res.cloudinary.com/di7aefgt3/image/upload/v1686770109/102669_ydfv42.webp")
   user10.photo.attach(io: avatar10, filename:"Mon avatar10")
   user10.save!
 
