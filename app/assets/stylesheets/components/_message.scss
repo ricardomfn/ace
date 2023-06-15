@@ -43,13 +43,19 @@
   align-items: center;
   text-align: center;
 
-  color: #EBF95E;
+  color: #253343;
   background-color: white;
   border: none;
+  padding-bottom: 5px;
 }
 
 .input-chat input {
   background-color: white;
   border: none;
   border-bottom: 2px solid #253343;
+}
+
+.form-control {
+  border-radius: 0px !important;
+  width: 90%;
 }
