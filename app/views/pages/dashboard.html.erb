@@ -17,102 +17,100 @@
       <!-- Contenu de la colonne des messages -->
 
       <% @requests.each do |request| %>
-        <% if request.status == "accepted" && request.match.match_type == "Défi" %>
+          <% if request.user == current_user %>
           <% first_print_date = request.created_at %>
           <% current_date = Time.now %>
           <% difference_hours= ((current_date - first_print_date) / 3600).round %>
           <% difference_days= ((current_date - first_print_date) / 96400).round %>
-          <div class="card-vinted card-score" data-controller="toggle" class="collapsed">
+          <div class="card-vinted" data-controller="toggle" class="collapsed">
             <div data-action="click->toggle#toggle">
-            <% if difference_hours < 24%>
-              <p style='color: gray'>il y a <%= difference_hours %> heures</p>
-            <% elsif difference_days = 1 %>
-              <p style='color: gray'>il y a <%= difference_days %> jour</p>
-            <% else %>
-              <p style='color: gray'>il y a <%= difference_days %> jours</p>
-            <% end %>
-            <h2 style="color: #253343;"> Rentrez le score du défi avec <%= request.user.nickname %></h2>
+              <% if difference_hours < 24%>
+                <p style='color: gray'>il y a <%= difference_hours %> heures</p>
+              <% elsif difference_days = 1 %>
+                <p style='color: gray'>il y a <%= difference_days %> jour</p>
+              <% else %>
+                <p style='color: gray'>il y a <%= difference_days %> jours</p>
+              <% end %>
+              <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
+              <%# <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%>
+              <% if request.status == "refused" %>
+              <p style="color: grey"><strong> Votre match a été annulé </strong> </p>
+              <% end %>
             </div>
             <div data-toggle-target="content">
-              <button class="btn-ace"><%= link_to "Rentrer le score", edit_match_path(request.match), class: "" %></button>
+              <p><%= request.match.address %></p>
+              <p><strong>Niveau: </strong><%= request.match.level.to_i %> pts</p>
+              <p><strong>Date: </strong><%= request.match.date.strftime("%d/%m/%Y %H")%>h</p>
+              <p><strong><%= request.match.price.to_i %>€</strong></p>
+              <%# <p><strong>Son statut est : </strong><%= request.status %>
+              <div class="button-container">
+                <% if request.status == "pending" %>
+                  <button class="refuse-button button-full-width btn-refuser"><%= link_to "Annuler le match", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <% if request.status == "accepted" && request.match.match_type == "Défi" %>
+            <% first_print_date = request.created_at %>
+            <% current_date = Time.now %>
+            <% difference_hours= ((current_date - first_print_date) / 3600).round %>
+            <% difference_days= ((current_date - first_print_date) / 96400).round %>
+            <div class="card-vinted card-score" data-controller="toggle" class="collapsed">
+              <div data-action="click->toggle#toggle">
+              <% if difference_hours < 24%>
+                <p style='color: gray'>il y a <%= difference_hours %> heures</p>
+              <% elsif difference_days = 1 %>
+                <p style='color: gray'>il y a <%= difference_days %> jour</p>
+              <% else %>
+                <p style='color: gray'>il y a <%= difference_days %> jours</p>
+              <% end %>
+              <h2 style="color: #253343;"> Rentrez le score du défi avec <%= request.user.nickname %></h2>
+              </div>
+              <div data-toggle-target="content">
+                <button class="btn-ace"><%= link_to "Rentrer le score", edit_match_path(request.match), class: "" %></button>
+              </div>
+            </div>
+          <% end %>
+
+          <% first_print_date = request.created_at %>
+          <% current_date = Time.now %>
+          <% difference_hours= ((current_date - first_print_date) / 3600).round %>
+          <% difference_days= ((current_date - first_print_date) / 96400).round %>
+          <div class="card-vinted" data-controller="toggle" class="collapsed">
+            <div data-action="click->toggle#toggle">
+              <% if difference_hours < 24%>
+                <p style='color: gray'>il y a <%= difference_hours %> heures</p>
+              <% elsif difference_days = 1 %>
+                <p style='color: gray'>il y a <%= difference_days %> jour</p>
+              <% else %>
+                <p style='color: gray'>il y a <%= difference_days %> jours</p>
+              <% end %>
+              <h2> <%= request.user.nickname %> veut jouer avec vous! </h2>
+              <%# <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%>
+              <% if request.status == "refused" %>
+              <p><strong>Votre match a été refusé </strong> </p>
+              <% elsif request.status == "accepted" %>
+              <p style="color: grey"><strong>Votre match a été accepté!</strong> </p>
+              <% end %>
+            </div>
+            <div data-toggle-target="content">
+              <p><strong>Adresse: </strong><%= request.match.address %></p>
+              <p><strong>Niveau: </strong><%= request.match.level.to_i %> pts</p>
+              <p><strong>Date: </strong><%= request.match.date.strftime("%d/%m/%Y %H")%>h</p>
+              <p><%= request.match.price.to_i %>€</p>
+              <%# <p><%= request.status %>
+              <div class="button-container">
+                <% if request.status == "pending" %>
+                  <div class="button-wrapper">
+                    <button class="accept-button button-half-width btn-accepter"><%= link_to "Accepter", accept_request_path(request), data: { turbo_method: :patch } %></button>
+                    <button class="refuse-button button-half-width btn-refuser"><%= link_to "Refuser", refuse_request_path(request), data: { turbo_method: :patch } %></button>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
-      <% end %>
-
-      <% @my_requests.each do |request| %>
-        <% first_print_date = request.created_at %>
-        <% current_date = Time.now %>
-        <% difference_hours= ((current_date - first_print_date) / 3600).round %>
-        <% difference_days= ((current_date - first_print_date) / 96400).round %>
-        <div class="card-vinted" data-controller="toggle" class="collapsed">
-          <div data-action="click->toggle#toggle">
-            <% if difference_hours < 24%>
-              <p style='color: gray'>il y a <%= difference_hours %> heures</p>
-            <% elsif difference_days = 1 %>
-              <p style='color: gray'>il y a <%= difference_days %> jour</p>
-            <% else %>
-              <p style='color: gray'>il y a <%= difference_days %> jours</p>
-            <% end %>
-            <h2> Votre demande de match à <%= request.match.user.nickname %>!</h2>
-            <%# <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%>
-            <% if request.status == "refused" %>
-            <p style="color: grey"><strong> Votre match a été annulé </strong> </p>
-            <% end %>
-          </div>
-          <div data-toggle-target="content">
-            <p><%= request.match.address %></p>
-            <p><strong>Niveau: </strong><%= request.match.level.to_i %> pts</p>
-            <p><strong>Date: </strong><%= request.match.date.strftime("%d/%m/%Y %H")%>h</p>
-            <p><strong><%= request.match.price.to_i %>€</strong></p>
-            <%# <p><strong>Son statut est : </strong><%= request.status %>
-            <div class="button-container">
-              <% if request.status == "pending" %>
-                <button class="refuse-button button-full-width btn-refuser"><%= link_to "Annuler le match", refuse_request_path(request), data: { turbo_method: :patch } %></button>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-      <% @requests.each do |request| %>
-        <% first_print_date = request.created_at %>
-        <% current_date = Time.now %>
-        <% difference_hours= ((current_date - first_print_date) / 3600).round %>
-        <% difference_days= ((current_date - first_print_date) / 96400).round %>
-        <div class="card-vinted" data-controller="toggle" class="collapsed">
-          <div data-action="click->toggle#toggle">
-            <% if difference_hours < 24%>
-              <p style='color: gray'>il y a <%= difference_hours %> heures</p>
-            <% elsif difference_days = 1 %>
-              <p style='color: gray'>il y a <%= difference_days %> jour</p>
-            <% else %>
-              <p style='color: gray'>il y a <%= difference_days %> jours</p>
-            <% end %>
-            <h2> <%= request.user.nickname %> veut jouer avec vous! </h2>
-            <%# <p> <i class="fa-solid fa-baseball" style="color: #020203;"></i> Match <%= request.match.modality%>
-            <% if request.status == "refused" %>
-            <p><strong>Votre match a été refusé </strong> </p>
-            <% elsif request.status == "accepted" %>
-            <p style="color: grey"><strong>Votre match a été accepté!</strong> </p>
-            <% end %>
-          </div>
-          <div data-toggle-target="content">
-            <p><strong>Adresse: </strong><%= request.match.address %></p>
-            <p><strong>Niveau: </strong><%= request.match.level.to_i %> pts</p>
-            <p><strong>Date: </strong><%= request.match.date.strftime("%d/%m/%Y %H")%>h</p>
-            <p><%= request.match.price.to_i %>€</p>
-            <%# <p><%= request.status %>
-            <div class="button-container">
-              <% if request.status == "pending" %>
-                <div class="button-wrapper">
-                  <button class="accept-button button-half-width btn-accepter"><%= link_to "Accepter", accept_request_path(request), data: { turbo_method: :patch } %></button>
-                  <button class="refuse-button button-half-width btn-refuser"><%= link_to "Refuser", refuse_request_path(request), data: { turbo_method: :patch } %></button>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
       <% end %>
 
     </div>

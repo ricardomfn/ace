@@ -1,5 +1,5 @@
 meta_product_name: "Ace Tennis"
-meta_title: "Ace - La communauté des jouers"
+meta_title: "Ace - La communauté des joueurs"
 meta_description: "Trouvez des partenaires, jouez, accumulez des points et créez des ligues entre amis"
 meta_image: "/app/assets/images/Tennis-bro.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
