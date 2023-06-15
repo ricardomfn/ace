@@ -7,43 +7,43 @@
       <%= f.input :email,
         required: true,
         autofocus: true,
-        input_html: { autocomplete: "email", class: "your-input-class" } %>
+        input_html: { autocomplete: "email", class: "create-input transparent-input"} %>
 
       <%= f.input :nickname,
         required: true,
-        input_html: { autocomplete: "nickname", class: "your-input-class" },
+        input_html: { autocomplete: "nickname", class: "create-input transparent-input" },
         label: "Nom d'utilisateur" %>
 
       <%= f.input :first_name,
         required: true,
-        input_html: { autocomplete: "first_name", class: "your-input-class" },
+        input_html: { autocomplete: "first_name", class: "create-input transparent-input" },
         label: "Prénom" %>
 
       <%= f.input :last_name,
         required: true,
-        input_html: { autocomplete: "last_name", class: "your-input-class" },
+        input_html: { autocomplete: "last_name", class: "create-input transparent-input" },
         label: "Nom de famille" %>
 
       <%= f.input :birth_date,
           as: :string,
-          input_html: { data: { controller: "datepicker" }, class: "your-input-class" },
+          input_html: { data: { controller: "datepicker" }, class: "create-input transparent-input" },
           label: "Date de naissance" %>
 
       <%= f.input :password,
         required: true,
         hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
-        input_html: { autocomplete: "new-password", class: "your-input-class" },
+        input_html: { autocomplete: "new-password", class: "create-input transparent-input" },
         label: "Mot de passe" %>
 
       <%= f.input :password_confirmation,
         required: true,
-        input_html: { autocomplete: "new-password", class: "your-input-class" },
+        input_html: { autocomplete: "new-password", class: "create-input transparent-input" },
         label: "Confirmer mot de passe" %>
 
       <%= f.input :points,
         required: true,
         collection: [['Jamais joué', 0],['Débutant', 200],['Intermédiaire', 400],['Confirmé', 600],['Expert', 800],['Élite', 1000]],
-        input_html: { autocomplete: "points", class: "your-input-class" },
+        input_html: { autocomplete: "points", class: "create-input transparent-input" },
         label: "Comment jugez-vous votre niveau?" %>
 
       <%= f.input :photo, as: :file %>
