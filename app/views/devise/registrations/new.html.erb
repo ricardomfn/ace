@@ -1,62 +1,57 @@
-<h2>Sign up</h2>
+<h2 class="title mb-4 text-center">Inscription</h2>
+<div class="container">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "your-form-class" }) do |f| %>
+    <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :email,
+        required: true,
+        autofocus: true,
+        input_html: { autocomplete: "email", class: "your-input-class" } %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-      required: true,
-      autofocus: true,
-      input_html: { autocomplete: "email" } %>
+      <%= f.input :nickname,
+        required: true,
+        input_html: { autocomplete: "nickname", class: "your-input-class" },
+        label: "Nom d'utilisateur" %>
 
-    <%= f.input :nickname,
-      required: true,
-      input_html: { autocomplete: "nickname" },
-      label: "Nom d'utilisateur" %>
+      <%= f.input :first_name,
+        required: true,
+        input_html: { autocomplete: "first_name", class: "your-input-class" },
+        label: "Prénom" %>
 
-    <%= f.input :first_name,
-      required: true,
-      input_html: { autocomplete: "first_name" },
-      label: "Prénom" %>
+      <%= f.input :last_name,
+        required: true,
+        input_html: { autocomplete: "last_name", class: "your-input-class" },
+        label: "Nom de famille" %>
 
-    <%= f.input :last_name,
-      required: true,
-      input_html: { autocomplete: "last_name" },
-      label: "Nom de famille" %>
+      <%= f.input :birth_date,
+          as: :string,
+          input_html: { data: { controller: "datepicker" }, class: "your-input-class" },
+          label: "Date de naissance" %>
 
-    <%= f.input :birth_date,
-        as: :string,
-        input_html: { data: { controller: "datepicker" } },
-        label: "Date de naissance" %>
+      <%= f.input :password,
+        required: true,
+        hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+        input_html: { autocomplete: "new-password", class: "your-input-class" },
+        label: "Mot de passe" %>
 
-    <%= f.input :password,
-      required: true,
-      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-      input_html: { autocomplete: "new-password" },
-      label: "Mot de passe" %>
+      <%= f.input :password_confirmation,
+        required: true,
+        input_html: { autocomplete: "new-password", class: "your-input-class" },
+        label: "Confirmer mot de passe" %>
 
-    <%= f.input :password_confirmation,
-      required: true,
-      input_html: { autocomplete: "new-password" },
-      label: "Confirmer mot de passe" %>
+      <%= f.input :points,
+        required: true,
+        collection: [['Jamais joué', 0],['Débutant', 200],['Intermédiaire', 400],['Confirmé', 600],['Expert', 800],['Élite', 1000]],
+        input_html: { autocomplete: "points", class: "your-input-class" },
+        label: "Comment jugez-vous votre niveau?" %>
 
-    <%= f.input :points,
-      required: true,
-      collection: [['Jamais joué', 0],['Débutant', 200],['Intermediaire', 400],['Confirmé', 600],['Expert', 800],['Elite',1000]],
-      input_html: { autocomplete: "points" },
-      label: "Comment jugez-vous votre niveau?" %>
+      <%= f.input :photo, as: :file %>
+    </div>
 
-    <%= f.input :photo, as: :file %>
-
-
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-
-<%= render "devise/shared/links" %>
-
-  </div>
-
-<% end %>
+    <div class="form-actions">
+        <%= f.button :submit, "S'inscrire", class: "btn-ace mt-3 mb-3 w-100" %>
+        <%= link_to "Se connecter", new_session_path(resource_name), class: "btn-ace btn w-100" %>
+    </div>
+  <% end %>
+</div>

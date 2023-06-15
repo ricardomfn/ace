@@ -276,8 +276,8 @@ match9.save!
 request1 = Request.new(status: 0, match_id: match1.id, user_id: user2.id)
 request1.save!
 
-request2 = Request.new(status: 0, match_id: match2.id, user_id: user1.id)
-request2.save!
+# request2 = Request.new(status: 0, match_id: match2.id, user_id: user1.id)
+# request2.save!
 
 # league1 = League.new(name: "Monde", user_id: user2.id)
 # league1.image = "icon2.png"
