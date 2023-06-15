@@ -85,6 +85,15 @@
   color: #253343;
 }
 
+@media (hover: none) {
+  /* Styles spécifiques aux appareils mobiles sans fonctionnalité de hover */
+  .column-button:active,
+  .column-button:focus {
+    background-color: white;
+    color: #253343;
+  }
+}
+
 .column {
   padding: 0%;
 }
