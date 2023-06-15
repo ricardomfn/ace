@@ -120,7 +120,6 @@
 
         <% unless @request_user.empty? %>
           <% if @request_user.last.match.winner.present? %>
-          <%= raise %>
             <% @request_user.each do |request| %>
             <div class="small-card shadow-card" id="card-hist">
               <div>
