@@ -17,8 +17,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @my_requests = Request.where(user: current_user)
-    @requests = Request.where(match: current_user.matches)
+    @requests = []
+    @requests += Request.where(match: current_user.matches).to_a
+    @requests += Request.where(user: current_user).to_a
+    @requests = @requests.sort_by { |r| -r.id }.uniq
   end
 
   def desk
