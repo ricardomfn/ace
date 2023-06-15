@@ -26,9 +26,9 @@
   <div class="show-match">
     <div class="user-infos">
             <div>
-              <p ><%= @match.user.nickname %><em> (Lvl : <%= @match.user.points%> pts) </p></em>
-              <p> <%= @match.price %> €</p>
-              <p>Match <%= @match.modality %></p>
+              <p><span style="font-family: CherryBomb-Regular;font-size: 25px;"><%= @match.user.nickname %></span><em> (Lvl : <%= @match.user.points%> pts) </p></em>
+              <p><i class="fa-solid fa-coins" style="color: #080808;margin-right:10px"></i><%= @match.price %> €</p>
+              <p> <i class="fa-solid fa-people-arrows" style="color: #050505; margin-right:10px"></i>Match <%= @match.modality %></p>
               <p>Niveau recherché : <span style="color:red"><%= @match.level %> points </span></p>
             </div>
     </div>
@@ -49,9 +49,12 @@
       <% if @match.match_type == "Défi" %>
         <div>
           <i class="fa-solid fa-trophy" style="color: #253343; font-size: 40px;"></i>
+          <p class="p-2">Défi</p>
         </div>
+
       <% else %>
-        <i class="fa-solid fa-face-smile" style="color: #253343; font-size: 40px;"></i>
+        <i class="fa-solid fa-face-smile" style="color: #253343; font-size: 40px; padding-left:5px"></i>
+        <p style="">Amical</p>
       <% end %>
 
     </div>
