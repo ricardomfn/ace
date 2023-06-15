@@ -7,6 +7,13 @@
   color: #F5F5F5;
 }
 
+.nav-item {
+  .active {
+    background-color: white;
+    color: #253343;
+  }
+}
+
 .icone-participants {
   position: absolute;
   top: 5px;

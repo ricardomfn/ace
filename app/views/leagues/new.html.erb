@@ -1,18 +1,4 @@
-  <div class="navbar">
-    <div class="back-arrow">
-      <%= link_to "javascript:history.back()" do %>
-      <i class="fa-solid fa-arrow-left fa-2xl" style="color: #253343;"></i>
-      <% end %>
-    </div>
-    <div style="color: #253343; font-family: Cherry Bomb;">
-      Création
-    </div>
-    <div class="logo">
-      <%= link_to matches_path do %>
-      <img src="https://res.cloudinary.com/diuabdrmm/image/upload/v1686218660/ace_vlx2py.png" alt="Logo" width="50" height="50">
-      <% end %>
-    </div>
-  </div>
+<%= render 'shared/navbar_general' %>
 
 <%# <div class="d-flex justify-content-center">
   <div>
@@ -32,7 +18,7 @@
 
 
 <div class="text-center mb-4 mt-4">
-  <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular;"><strong>Choisi ton logo</strong></h1>
+  <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular;"><strong>Choisis ton logo</strong></h1>
 </div>
 
 
