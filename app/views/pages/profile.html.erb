@@ -40,7 +40,7 @@
               <%= link_to league_path(league) do %>
                 <div class="small-card mt-0 carte-ligues mb-2 shadow-card", style="width: 360px; margin: auto;">
                     <%= image_tag league.image, class: "rounded-league-image m-3", style: "width: 40px; height: 40px;" %>
-                    <h4 class="card-title"><%= league.name %></h4>
+                    <h4 class="card-titre-gras"><%= league.name %></h4>
                     <p class="card-text icone-participants" style="margin-left: auto; margin-right: auto;">  <%= league.memberships.count %><i class="fa-solid fa-user-group" style="color: #253343; padding-left: 5px;"></i></p>
 
                     <%# <div class="arrow">
@@ -72,7 +72,7 @@
                     <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
                   <% end %>
                 </div>
-                <div class="m-1 card-title">
+                <div class="m-1 card-titre-gras">
                   <%= match.winner %>
                 </div>
                 <div class="m-1">
@@ -84,7 +84,7 @@
                 <div class="m-1">
                   <%= match.loser_score %>
                 </div>
-                <div class="card-title">
+                <div class="card-titre-gras">
                   <% if match.winner == match.user.nickname %>
                     <% loser_request = Request.where(match: match).first %>
                     <% loser_nickname = loser_request.user.nickname if loser_request %>
@@ -128,7 +128,7 @@
                   <%= cl_image_tag loser.photo.key, class: "avatar m-2" if loser %>
                 <% end %>
               </div>
-              <div class="m-1 card-title">
+              <div class="m-1 card-titre-gras">
                 <%= request.match.winner %>
               </div>
               <div class="m-1">
@@ -140,7 +140,7 @@
               <div class="m-1">
                 <%= request.match.loser_score %>
               </div>
-              <div class="card-title">
+              <div class="card-titre-gras">
                 <% if request.match.winner == request.match.user.nickname %>
                   <%= loser_nickname = request.user.nickname if request%>
                 <% else %>
