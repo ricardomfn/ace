@@ -5,13 +5,14 @@
       <%# <% match.requests.where.not(status: 1).each do |request| %>
       <%= link_to match_path(match) do %>
         <div class="card">
-          <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between front-titre">
             <h2><strong>Match <%= match.modality %></strong></h2>
             <% if match.match_type == "Défi"  %>
               <p><i class="fa-solid fa-trophy" style="color: #000000; font-size: 18px; padding-right: 5px" ></i><%= match.match_type %></p>
             <%else %>
               <p><i class="fa-solid fa-face-smile" style="color: #000000; font-size: 18px; padding-right: 5px"></i><%= match.match_type %></p>
             <%end %>
+
           </div>
 
           <h3 class="card-address"><i class="fa-solid fa-location-dot" style="color: #000000; font-size: 18px; padding-right: 5px"></i><%= match.address %></h3>
@@ -21,11 +22,10 @@
             <%# <p><%= match.level.to_i</p> %>
             <%# <p><%= match.price.to_i€</p> %>
             <%# <p><%= match.requests.last.status</p> %>
+            <%= link_to match_path(match) do %>
+            <div class="img-arrow"></div>
+            <% end %>
           </div>
-
-          <%= link_to match_path(match) do %>
-          <div class="img-arrow"></div>
-          <% end %>
 
 
         </div>

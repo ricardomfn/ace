@@ -12,7 +12,7 @@ export default class extends Controller {
       title: 'Votre demande a bien été envoyée !!!',
       width: 500,
       padding: '3em',
-      color: '#716add',
+      color: '#253343',
       backdrop: `
         rgba(0,0,123,0.4)
         url("https://www.informatiquegifs.com/gifs/images/tennis/1.gif")

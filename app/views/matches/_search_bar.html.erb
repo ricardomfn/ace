@@ -1,5 +1,5 @@
 
-  <%= form_with url: matches_path, method: :get, class: "" do |f| %>
+  <%= form_with url: matches_path, method: :get, class: "", html: { data: { controller: "btnsave" } } do |f| %>
     <div>
 
       <%= text_field_tag :address, params[:address], class: "form-control ace-bar ace-pad transparent-input", placeholder: "Ville", value: ""%>
@@ -7,5 +7,6 @@
       <%# <%= f.input :date,
             as: :string,
             input_html: { data: { controller: "datepicker" }, class: "form-control ace-bar transparent-input" } %>
+      <%= f.submit class: "save-sub d-none" %>
     </div>
   <% end %>
