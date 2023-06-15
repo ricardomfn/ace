@@ -38,3 +38,13 @@
   color: #253343;
   border-radius: 10px;
 }
+
+
+
+ .message_content:focus, #message_content:focus {
+  outline-width: 0;
+  outline: none !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #253343;
+  background-color: white;
+}
