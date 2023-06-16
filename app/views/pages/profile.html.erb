@@ -59,7 +59,6 @@
 
         <div class="tab-pane fade ms-3" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0" >
 
-        <% unless @matches_user.empty? %>
           <% if @matches_user.last.winner.present? %>
             <% @matches_user.each do |match| %>
               <div class="small-card mt-0 mb-2 shadow-card" id="card-hist">
@@ -116,10 +115,9 @@
               </div>
             <% end %>
           <% end %>
-        <% end %>
 
-        <% unless @request_user.empty? %>
           <% if @request_user.last.match.winner.present? %>
+          <%= raise %>
             <% @request_user.each do |request| %>
             <div class="small-card shadow-card" id="card-hist">
               <div>
@@ -171,7 +169,6 @@
             </div>
             <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
   </div>
