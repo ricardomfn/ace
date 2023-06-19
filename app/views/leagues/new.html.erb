@@ -1,26 +1,27 @@
 <%= render 'shared/navbar_general' %>
 
-<%# <div class="d-flex justify-content-center">
-  <div>
-  <button class="number-wrapper">
-     1
-  </button>
-    <p class="label">Logo</p>
+<div data-controller="multi-form">
+
+  <div class="d-flex justify-content-center" >
+    <div data-multi-form-target="first" >
+      <p data-multi-form-target="wrap" class="number-wrapper">1</p>
+      <p class="label">Logo</p>
+    </div>
+    <div data-multi-form-target="ligne">___________</div>
+    <div>
+      <p class="number-wrapper">2</p>
+      <p class="label">Nom</p>
+    </div>
   </div>
-  <div>___________</div>
-  <div>
-  <button class="number-wrapper">
-     2
-  </button>
-    <p class="label">Nom</p>
+
+
+  <div class="text-center mb-4 mt-4" data-multi-form-target="link">
+    <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular;"><strong>Choisis ton logo</strong></h1>
   </div>
-</div> %>
 
-
-<div class="text-center mb-4 mt-4">
-  <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular;"><strong>Choisis ton logo</strong></h1>
-</div>
-
+                <div class="text-center mb-4 mt-4 nom" data-multi-form-target="nom">
+                  <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular; margin-bottom: 20px;"><strong>Nom de la ligue</strong></h1>
+                </div>
 
 <%= simple_form_for(@league) do |f| %>
   <%= f.input :image,
@@ -28,32 +29,24 @@
               collection_wrapper_tag: 'div',
               collection_wrapper_class: 'ligue-wrapper',
               item_wrapper_class: 'ligue-item category-ligue',
-              input_html: { class: 'ligue-selector' },
+              input_html: { class: 'ligue-selector', 'data-multi-form-target': 'image' },
               collection: [
-                [image_tag(League::CATEGORIES.first, alt: ""), League::CATEGORIES.first],
-                [image_tag(League::CATEGORIES.second, alt: ""), League::CATEGORIES.second],
-                [image_tag(League::CATEGORIES.third, alt: ""), League::CATEGORIES.third],
-                [image_tag(League::CATEGORIES.fourth, alt: ""), League::CATEGORIES.fourth],
-                [image_tag(League::CATEGORIES.fifth, alt: ""), League::CATEGORIES.fifth],
-                [image_tag(League::CATEGORIES[5], alt: ""), League::CATEGORIES[5]]
+                [image_tag(League::CATEGORIES.first, alt: "", 'data-multi-form-target': 'image'), League::CATEGORIES.first],
+                [image_tag(League::CATEGORIES.second, alt: "", 'data-multi-form-target': 'image'), League::CATEGORIES.second],
+                [image_tag(League::CATEGORIES.third, alt: "", 'data-multi-form-target': 'image'), League::CATEGORIES.third],
+                [image_tag(League::CATEGORIES.fourth, alt: "", 'data-multi-form-target': 'image'), League::CATEGORIES.fourth],
+                [image_tag(League::CATEGORIES.fifth, alt: "", 'data-multi-form-target': 'image'), League::CATEGORIES.fifth],
+                [image_tag(League::CATEGORIES[5], alt: "", 'data-multi-form-target': 'image'), League::CATEGORIES[5]]
               ]
   %>
 
-  <div class="text-center mb-4 mt-4">
-    <h1 style="color: #253343; font-size: 26px; font-family: CherryBomb-Regular; margin-bottom: 20px;"><strong>Nom de la ligue</strong></h1>
-  </div>
+
   <div class="text-center">
     <%= f.input :name, input_html: { class: 'name-field centered-input' }, label:false %>
     <%= f.button :submit, "Création", class: "btn-ace mt-4" %>
   </div>
-<% end %>
+  <% end %>
 
+<button class= 'btn-ace mt-4  cent' data-action="click->multi-form#hideLogo" data-action="click->multi-form#nom" >Suivant</button>
 
-
-
-
-<%#
-
-<div>
-<button class= 'button-17'>Suivant</button>
-</div> %>
+</div>
