@@ -55,7 +55,9 @@
   display: none;
 }
 
-
+.hide{
+  display: none;
+}
 
 .centered-input {
   margin: 0 auto;
@@ -63,6 +65,10 @@
   width : 50vh;
 }
 
+.cent{
+  margin: 0 auto;
+  display: block;
+}
 
 .ajouter{
   border-radius: 10px;
